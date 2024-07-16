@@ -10,26 +10,41 @@ dotenv.config();
 
 const app = express();
 
-const corsOptions = {
-  origin: "http://localhost:5173", // Allow only this origin
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Allow credentials
-  optionsSuccessStatus: 200,
-};
+const allowedOrigins = ['http://localhost:5173'];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true 
+}));
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
-// Create admin account if not exists
-createAdminAccount();
 
 // Routes
 app.use("/user", authRoute);
 
-// Start server
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  connectToMongoDB();
-  console.log(`Server listening on port ${port}!`);
-});
+
+const startServer = async () => {
+  try {
+    await connectToMongoDB();
+    console.log("Connected to MongoDB");
+
+    await createAdminAccount();
+
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}!`);
+    });
+  } catch (error) {
+    console.error("Failed to start server", error);
+  }
+};
+
+startServer();

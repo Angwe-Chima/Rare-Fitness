@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
-import "../css/Login.css";
-import googleLogo from "../images/google-icon.png";
+import "./auth.css";
+import googleLogo from "../../images/google-icon.png";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/axios";
-import guy from "../images/fit-guy.png";
+import axios from "../../api/axios";
+import guy from "../../images/fit-guy.png";
+import { Link } from "react-router-dom";
 
 // Regular expressions for validation
 const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
@@ -110,7 +111,7 @@ function Register() {
         <div className="top">
           <p>Do not have an account?</p>
           <button>
-            <a href="/register">Sign Up</a>
+            <Link to="/register">Sign Up</Link>
           </button>
         </div>
 

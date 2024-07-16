@@ -1,0 +1,73 @@
+.home {
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(0, 0, 0, 0.803),
+      rgb(0, 0, 0)
+    ),
+    url(../images/background-gym.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: star;
+  padding-left: 5em;
+  align-items: center;
+  position: relative;
+}
+
+.heroImg-div {
+  right: 8%;
+  bottom: 0;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.heroImg-div img {
+  width: 100%;
+  height: 90%;
+  object-fit: contain;
+}
+
+.home div:nth-child(1) {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  font-family: "Play Pretend", sans-serif;
+  gap: 2em;
+}
+
+.home div:nth-child(1) h1 {
+  font-size: 4rem;
+  width: 80%;
+  letter-spacing: 4px;
+}
+
+.home div:nth-child(1) h1 span {
+  color: orangered;
+}
+
+.home div:nth-child(1) p {
+  font-size: 1.5rem;
+  width: 50%;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.home div:nth-child(1) button {
+  padding: 1em 4em;
+  border-radius: 100vw;
+  background-color: orangered;
+}
+.home div:nth-child(1) button a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1em;
+  transition: .4s;
+}
+

@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Register.css";
-import googleLogo from "../images/google-icon.png";
+import "./auth.css";
+import googleLogo from "../../images/google-icon.png";
 import { Link } from "react-router-dom";
-import axios from "../api/axios";
-import lady from "../images/fit-lady.png";
+import axios from "../../api/axios";
+import lady from "../../images/fit-lady.png";
 
 const fullNameRegex = /^[a-zA-Z\s'-]{2,}$/;
 const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
