@@ -10,12 +10,12 @@ export const register = async (req, res) => {
     // Check if the user already exists
     const foundUser = await User.findOne({ user });
     if (foundUser) {
-      return res.status(200).json({
+      return res.status(400).json({
         error: "User already exists",
       });
     }
 
-    // Hash password here
+    // Hash password
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -28,29 +28,25 @@ export const register = async (req, res) => {
       role: "customer",
     });
 
-    if (newUser) {
-      await newUser.save();
+    await newUser.save();
 
-      // Generate token and set cookie
-      generateTokenAndSetCookie(newUser._id, res);
+    // Generate token and set cookie
+    const token = generateTokenAndSetCookie(newUser._id, res);
 
-      // Send user data back to the client
-      const userData = {
-        _id: newUser._id,
-        fullName: newUser.fullName,
-        user: newUser.user,
-        email: newUser.email,
-      };
-      res.status(201).json(userData);
-    } else {
-      return res.status(400).json({ error: "Invalid user data" });
-    }
+    // Send user data back to the client
+    const userData = {
+      _id: newUser._id,
+      fullName: newUser.fullName,
+      user: newUser.user,
+      email: newUser.email,
+      token, // Include the token in the response
+    };
+    res.status(201).json(userData);
   } catch (err) {
     // Handle errors
     handleCatchError(err, "register", res);
   }
 };
-
 
 export const login = async (req, res) => {
   try {
@@ -60,33 +56,33 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(
-      password,
-      foundUser.password
-    );
+    const isPasswordCorrect = await bcrypt.compare(password, foundUser.password);
 
     if (!isPasswordCorrect) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
-    generateTokenAndSetCookie(foundUser._id, res);
 
+    // Generate token and set cookie
+    const token = generateTokenAndSetCookie(foundUser._id, res);
+    
+    // Send user data back to the client, including the token
     res.status(200).json({
       _id: foundUser._id,
       fullName: foundUser.fullName,
       user: foundUser.user,
       email: foundUser.email,
+      token, // Include the token in the response
     });
   } catch (err) {
-    catchHandler(err, "login", res);
+    handleCatchError(err, "login", res);
   }
 };
-
 
 export const logout = async (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
-    res.status(200).send({ message: "logged out successfully" });
+    res.status(200).send({ message: "Logged out successfully" });
   } catch (err) {
-    catchHandler(err, "logout", res);
+    handleCatchError(err, "logout", res);
   }
 };

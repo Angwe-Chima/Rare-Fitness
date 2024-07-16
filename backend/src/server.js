@@ -10,11 +10,17 @@ dotenv.config();
 
 const app = express();
 
+const corsOptions = {
+  origin: "http://localhost:5173", // Allow only this origin
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow credentials
+  optionsSuccessStatus: 200,
+};
+
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
-
+app.use(cors(corsOptions));
 // Create admin account if not exists
 createAdminAccount();
 

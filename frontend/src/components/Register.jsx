@@ -2,16 +2,14 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Register.css";
 import googleLogo from "../images/google-icon.png";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import axios from "../api/axios";
+import lady from "../images/fit-lady.png";
 
 const fullNameRegex = /^[a-zA-Z\s'-]{2,}$/;
 const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[0-9@#$%^&+=]).{5,}$/;
-
-import lady from '../images/fit-lady.png';
-
 
 function Register() {
   const userRef = useRef();
@@ -30,9 +28,9 @@ function Register() {
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [password, setpassword] = useState("");
-  const [validpassword, setValidpassword] = useState(false);
-  const [passwordFocus, setpasswordFocus] = useState(false);
+  const [password, setPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
@@ -54,7 +52,7 @@ function Register() {
   }, [email]);
 
   useEffect(() => {
-    setValidpassword(passwordRegex.test(password));
+    setValidPassword(passwordRegex.test(password));
   }, [password]);
 
   useEffect(() => {
@@ -64,32 +62,35 @@ function Register() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "user") {
-      // Capitalize the first letter and concatenate with the rest of the string
       setUser(value.charAt(0).toUpperCase() + value.slice(1));
     } else if (name === "fullName") {
       setFullName(value.charAt(0).toUpperCase() + value.slice(1));
     } else if (name === "email") {
       setEmail(value);
     } else if (name === "password") {
-      setpassword(value);
+      setPassword(value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validName || !validFullName || !validEmail || !validpassword) {
+    if (!validName || !validFullName || !validEmail || !validPassword) {
       setErrMsg("Please fill out the form correctly.");
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/user/register", {
-        user,
-        fullName,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "/register",
+        JSON.stringify({ user, fullName, email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
       console.log("Data submitted:", response.data);
       setSuccess(true);
+      console.log(success);
       navigate("/login");
     } catch (error) {
       console.error("There was an error!", error);
@@ -97,15 +98,14 @@ function Register() {
     }
   };
 
-  console.log(success);
   return (
     <div className="register">
       <div className="left">
-        <img src={lady} alt="" />
+        <img src={lady} alt="Fitness lady" />
       </div>
       <div className="right">
         <div className="top">
-          <p>Already member?</p>
+          <p>Already a member?</p>
           <button>
             <Link to="/login">Login</Link>
           </button>
@@ -197,19 +197,19 @@ function Register() {
             <div className="input-div-1">
               <label htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 autoComplete="off"
                 value={password}
                 onChange={handleChange}
                 required
-                aria-invalid={validpassword ? "false" : "true"}
+                aria-invalid={validPassword ? "false" : "true"}
                 aria-describedby="passwordNote"
-                onFocus={() => setpasswordFocus(true)}
-                onBlur={() => setpasswordFocus(false)}
+                onFocus={() => setPasswordFocus(true)}
+                onBlur={() => setPasswordFocus(false)}
               />
-              {passwordFocus && password && !validpassword && (
+              {passwordFocus && password && !validPassword && (
                 <p id="passwordNote" className="instructions">
                   Password must be at least 5 characters long and contain at
                   least one number or special character.
@@ -217,7 +217,7 @@ function Register() {
               )}
             </div>
             <div className="btn-div">
-              <button>Create Account</button>
+              <button type="submit">Create Account</button>
             </div>
             {errMsg && (
               <p ref={errRef} className="errmsg" aria-live="assertive">

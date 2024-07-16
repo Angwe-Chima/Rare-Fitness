@@ -2,77 +2,104 @@ import { useRef, useState, useEffect } from "react";
 import "../css/Login.css";
 import googleLogo from "../images/google-icon.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axios";
+import guy from "../images/fit-guy.png";
 
+// Regular expressions for validation
 const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
 const passwordRegex = /^(?=.*[0-9@#$%^&+=]).{5,}$/;
 
-import guy from '../images/fit-guy.png';
-
-
 function Register() {
+  // Refs for user input and error message
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
 
+  // State variables for form fields, validation, focus, error message, and success status
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
-  const [password, setpassword] = useState("");
-  const [validpassword, setValidpassword] = useState(false);
-  const [passwordFocus, setpasswordFocus] = useState(false);
+  const [password, setPassword] = useState("");
+  const [validPassword, setValidPassword] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
+  // Focus on the username input field when the component mounts
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
+  // Validate username using regex
   useEffect(() => {
     setValidName(usernameRegex.test(user));
   }, [user]);
 
+  // Validate password using regex
   useEffect(() => {
-    setValidpassword(passwordRegex.test(password));
+    setValidPassword(passwordRegex.test(password));
   }, [password]);
 
+  // Clear error message when any form field value changes
   useEffect(() => {
     setErrMsg("");
   }, [user, password]);
 
+  // Handle input changes and capitalize the first letter of the username
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "user") {
-      // Capitalize the first letter and concatenate with the rest of the string
       setUser(value.charAt(0).toUpperCase() + value.slice(1));
     } else if (name === "password") {
-      setpassword(value);
+      setPassword(value);
     }
-    if (name === "password") setpassword(value);
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validName || !validpassword) {
+    if (!validName || !validPassword) {
       setErrMsg("Please fill out the form correctly.");
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/user/login", {
-        user,
-        password,
-      });
-      console.log("Data submitted:", response.data);
-      setSuccess(true);
-      navigate("/home");
+      const response = await axios.post(
+        "/login",
+        JSON.stringify({ user, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: 'include',
+        }
+      );
+
+      // Check if the response status indicates success (e.g., status code 200)
+      if (response.status === 200) {
+        // Extract and store the JWT token from cookies
+        const token = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("jwt="))
+          ?.split("=")[1];
+
+        if (token) {
+          localStorage.setItem("token", token);
+          console.log("Token saved to local storage:", token);
+        } else {
+          console.log("Token not found in cookies");
+        }
+
+        console.log("Data submitted:", response.data);
+        setSuccess(true);
+        navigate("/");
+      } else {
+        throw new Error("Login failed");
+      }
     } catch (error) {
       setErrMsg("There was an error submitting your data.");
       console.error("There was an error!", error);
     }
   };
-
 
   return (
     <div className="register">
@@ -136,12 +163,12 @@ function Register() {
                 value={password}
                 onChange={handleChange}
                 required
-                aria-invalid={validpassword ? "false" : "true"}
+                aria-invalid={validPassword ? "false" : "true"}
                 aria-describedby="passwordNote"
-                onFocus={() => setpasswordFocus(true)}
-                onBlur={() => setpasswordFocus(false)}
+                onFocus={() => setPasswordFocus(true)}
+                onBlur={() => setPasswordFocus(false)}
               />
-              {passwordFocus && password && !validpassword && (
+              {passwordFocus && password && !validPassword && (
                 <p id="passwordNote" className="instructions">
                   Password must be at least 5 characters and include a number or
                   special character.
