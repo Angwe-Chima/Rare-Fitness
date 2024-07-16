@@ -1,10 +1,18 @@
 .home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero {
   background-image: linear-gradient(
       to bottom right,
       rgba(0, 0, 0, 0.803),
       rgb(0, 0, 0)
     ),
-    url(../images/background-gym.jpg);
+    url(../../images/background-gym.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -16,7 +24,7 @@
   position: relative;
 }
 
-.heroImg-div {
+.hero .heroImg-div {
   right: 8%;
   bottom: 0;
   position: absolute;
@@ -26,13 +34,13 @@
   align-items: flex-end;
 }
 
-.heroImg-div img {
+.hero .heroImg-div img {
   width: 100%;
   height: 90%;
   object-fit: contain;
 }
 
-.home div:nth-child(1) {
+.hero > div:nth-child(1) {
   color: white;
   display: flex;
   justify-content: center;
@@ -42,32 +50,179 @@
   gap: 2em;
 }
 
-.home div:nth-child(1) h1 {
+.hero > div:nth-child(1) h1 {
   font-size: 4rem;
   width: 80%;
   letter-spacing: 4px;
 }
 
-.home div:nth-child(1) h1 span {
+.hero > div:nth-child(1) h1 span {
   color: orangered;
 }
 
-.home div:nth-child(1) p {
+.hero > div:nth-child(1) p {
   font-size: 1.5rem;
   width: 50%;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.home div:nth-child(1) button {
+
+.hero > div:nth-child(1) a {
   padding: 1em 4em;
   border-radius: 100vw;
+  font-family: sans-serif;
   background-color: orangered;
-}
-.home div:nth-child(1) button a {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  font-size: 1em;
-  transition: .4s;
+  font-size: 0.9em;
+  transition: 0.4s;
 }
 
+/* card section after hero */
+.choose-us {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 4em;
+  gap: 3em;
+  background-image: url(../../images/image-group.png);
+  background-size: 20%;
+  background-position: center;
+}
+
+.card-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.card-title h2 {
+  font-size: 2em;
+  font-weight: 700;
+  position: relative;
+}
+
+.card-title h2::before {
+  content: "";
+  position: absolute;
+  background-color: orangered;
+  width: 50%;
+  bottom: -3px;
+  height: 3px;
+}
+
+.card-title p {
+  color: orangered;
+  font-family: cursive;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  background-color: rgb(19, 19, 19);
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 0.5rem;
+  padding: 1em;
+  color: white;
+  box-shadow: 0px 0px 10px 1px rgba(128, 128, 128, 0.366);
+  gap: 1em;
+  min-width: 200px;
+}
+
+.cards .card img {
+  width: 100%;
+  object-fit: contain;
+  height: 8em;
+  padding: 1em;
+}
+
+.card p {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.card h3 {
+  color: orangered;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* ////////////////// */
+.about-us {
+  width: 100%;
+  background-image: linear-gradient(to top left, black, rgba(0, 0, 0, 0.448)),
+    url(../../images/background1.jpg);
+  background-position: left;
+  background-size: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 1em;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.about-us::after {
+  content: "";
+  width: 40%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  transform: skew(-60deg);
+  position: absolute;
+  opacity: 0.9;
+}
+
+.about-us > div {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  width: 45%;
+  padding: 1em;
+  gap: 2em;
+  z-index: 2;
+}
+
+.about-us > div p:nth-child(1) {
+  color: orangered;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.about-us > div p {
+  width: 90%;
+  line-height: 1.5rem;
+}
+.about-us > div h2 {
+  font-size: 3rem;
+}
+
+.about-us .side-img {
+  width: 45%;
+  height: 80%;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px 1px black;
+}
+
+.about-us .side-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}

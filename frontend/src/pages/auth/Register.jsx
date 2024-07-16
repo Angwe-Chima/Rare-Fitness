@@ -88,9 +88,7 @@ function Register() {
         }
       );
 
-      console.log("Data submitted:", response.data);
       setSuccess(true);
-      console.log(success);
       navigate("/login");
     } catch (error) {
       console.error("There was an error!", error);
@@ -106,9 +104,7 @@ function Register() {
       <div className="right">
         <div className="top">
           <p>Already a member?</p>
-          <button>
-            <Link to="/login">Login</Link>
-          </button>
+           <Link to="/login">Login</Link>
         </div>
 
         <div className="whole">

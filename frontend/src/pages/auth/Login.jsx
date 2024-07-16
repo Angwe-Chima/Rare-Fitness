@@ -71,26 +71,14 @@ function Register() {
         JSON.stringify({ user, password }),
         {
           headers: { "Content-Type": "application/json" },
-          withCredentials: 'include',
+          withCredentials: "include",
         }
       );
 
       // Check if the response status indicates success (e.g., status code 200)
       if (response.status === 200) {
-        // Extract and store the JWT token from cookies
-        const token = document.cookie
-          .split("; ")
-          .find((row) => row.startsWith("jwt="))
-          ?.split("=")[1];
-
-        if (token) {
-          localStorage.setItem("token", token);
-          console.log("Token saved to local storage:", token);
-        } else {
-          console.log("Token not found in cookies");
-        }
-
-        console.log("Data submitted:", response.data);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userName", response.data.fullName);
         setSuccess(true);
         navigate("/");
       } else {
@@ -110,9 +98,7 @@ function Register() {
       <div className="right">
         <div className="top">
           <p>Do not have an account?</p>
-          <button>
-            <Link to="/register">Sign Up</Link>
-          </button>
+          <Link to="/register">Sign Up</Link>
         </div>
 
         <div className="whole">

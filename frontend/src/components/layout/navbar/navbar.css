@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   width: 90%;
   position: fixed;
   border-radius: 100vw;
@@ -7,108 +7,123 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1em 1.5em;
-  backdrop-filter: blur(10px); 
+  padding: 1em 2em;
+  backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.3);
-  box-shadow: -1px -1px 10px 1px rgba(128, 128, 128, 0.341),
-              inset -1px -1px 10px 1px rgba(0, 0, 0, 0.341);
+  box-shadow: -1px -1px 10px 1px rgba(84, 84, 84, 0.341),
+    inset -1px -1px 10px 1px rgba(0, 0, 0, 0.341);
   color: white;
 }
 
-.navbar .logo-div{
+.navbar .logo-div {
   display: flex;
-  justify-content:center ;
+  justify-content: center;
   align-items: center;
 }
 
-.navbar .logo-div img{
-  height:1.5em;
+.navbar .logo-div img {
+  height: 1.5em;
 }
 
-.navbar ul{
+.navbar ul {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2.5em;
 }
 
-.navbar ul li{
+.navbar ul li {
   list-style: none;
 }
 
-.navbar ul li a{
+.navbar ul li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
-  transition: .4s;
+  transition: 0.4s;
   position: relative;
 }
 
-.navbar ul li .active::before{
+.navbar ul li .active::before {
   content: "";
   width: 50%;
   position: absolute;
   height: 2px;
   background-color: orangered;
   bottom: -5px;
-  transition: .4s;
+  transition: 0.4s;
 }
-.navbar ul li a:hover::before{
+.navbar ul li a:hover::before {
   width: 100%;
 }
 
-.navbar ul li a:hover{
+.navbar ul li a:hover {
   color: orangered;
 }
 
-.right-nav{
+.right-nav {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   gap: 4em;
 }
 
-.right-nav img{
+.right-nav img {
   width: 40px;
 }
 
-.right-nav div:nth-child(1){
+.right-nav div:nth-child(1) {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.right-nav div:nth-child(1) p{
+.right-nav div:nth-child(1) p {
   font-size: 12px;
 }
 
-.right-nav div:nth-child(1) img{
+.right-nav div:nth-child(1) img {
   border-radius: 2px solid orangered;
   background-color: black;
-  border-radius:50% ;
+  border-radius: 50%;
   width: 28px;
   height: 28px;
 }
 
-
-.right-nav div:nth-child(2){
+.right-nav div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3em;
 }
 
-.right-nav div:nth-child(2) button{
-  padding:  .5rem 1.5rem;
+.right-nav div:nth-child(2) button {
+  padding: 0.5rem 1.5rem;
   border-radius: 100vw;
   border: none;
   background-color: orangered;
 }
 
-.right-nav div:nth-child(2) button a{
+.right-nav div:nth-child(2) button a {
   text-decoration: none;
   color: white;
-
 }
 
+.cart-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cart-img {
+  height: 1.8em;
+}
+
+.cart-div span{
+  font-size:.9rem;
+  top: -25%;
+  text-shadow: 2px 2px 3px black;
+  position: absolute;
+}

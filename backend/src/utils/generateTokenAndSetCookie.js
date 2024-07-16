@@ -14,7 +14,6 @@ const generateTokenAndSetCookie = (userId, res) => {
 
   // Store token in res.locals to include in the response
   res.locals.token = token;
-  console.log(token);
   return token;
 };
 

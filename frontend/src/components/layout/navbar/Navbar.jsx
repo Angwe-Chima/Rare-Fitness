@@ -1,11 +1,14 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../../images/RF-white-logo.png";
-import { useState } from "react";
+import cartImg from "../../../images/cart-img.svg";
+import { useState, useEffect } from "react";
 
 function Navbar() {
-  const [menu, setMenu] = useState("home");
-  const navigate = useNavigate()
+  const [menu, setMenu] = useState(localStorage.getItem("menu") || "home");
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const getClassName = (menuItem) => {
     return menu === menuItem ? "active" : "";
   };
@@ -13,15 +16,21 @@ function Navbar() {
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
 
-  const location = useLocation();
-  const hideNavbar = location.pathname === "/login";
-  if (hideNavbar) {
-    return null;
-  }
+  const hideNavbar = ["/login", "/logout", "/register"].includes(location.pathname);
 
-  const handleLogout =()=>{
-    localStorage.removeItem('token')
-    navigate('/login')
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userName");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("menu", menu);
+  }, [menu]);
+
+  // Ensure hooks are always called
+  if (hideNavbar) {
+    return <div />;
   }
 
   return (
@@ -78,18 +87,31 @@ function Navbar() {
       </ul>
       <div className="right-nav">
         <div>
-          <img src={logo} alt="Profile" />
-          <p>{userName ? userName: 'Not logged in '}</p>
+          {token ? (
+            <img
+              className="cart-img"
+              src="https://avatar.iran.liara.run/public/"
+              alt="Profile"
+            />
+          ) : (
+            ""
+          )}
+          <p>{userName ? userName : "Not logged in "}</p>
         </div>
         <div>
           <button>
             {token ? (
-              <Link to="/logout" onClick={handleLogout}>Logout</Link>
+              <Link to="/logout" onClick={handleLogout}>
+                Logout
+              </Link>
             ) : (
               <Link to="/login">Login</Link>
             )}
           </button>
-          <img src={logo} alt="Profile" />
+          <div className="cart-div">
+            <img className="cart-img" src={cartImg} alt="Profile" />
+            <span>2</span>
+          </div>
         </div>
       </div>
     </div>
