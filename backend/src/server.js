@@ -3,35 +3,40 @@ import dotenv from "dotenv";
 import connectToMongoDB from "./configuration/dbConfig.js";
 import cookieParser from "cookie-parser";
 import authRoute from "./routes/authRoute.js";
-import productRoute from './routes/productRoute.js';
+import productRoute from "./routes/productRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+import userRoute from "./routes/userRoute.js";
 import createAdminAccount from "./scripts/admin.js";
 import cors from "cors";
-
 
 dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ["http://localhost:5173"];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true 
-}));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
 
 // Routes
-app.use("/user", authRoute);
-app.use("/shop", productRoute)
+app.use("/auth", authRoute);
+app.use("/shop", productRoute);
+app.use("/order", orderRoute);
+app.use("/user", userRoute);
 
 const port = process.env.PORT || 3000;
 

@@ -12,15 +12,15 @@ import authMiddleware from "../utils/authMiddleware.js";
 const router = express.Router();
 
 // Create a new order
-router.post("/orders", authMiddleware, createOrder);
+router.post("/", authMiddleware, createOrder);
 
 // Get all orders
-router.get("/orders", authMiddleware, getOrders);
+router.get("/", authMiddleware, getOrders);
 
 // Get a single order by ID
-router.get("/orders/:id", authMiddleware, getOrderById);
+router.get("/:id", authMiddleware, getOrderById);
 
 // Update order status
-router.patch("/orders/:id/status", authMiddleware, updateOrderStatus);
+router.patch("/:id/status", authMiddleware, updateOrderStatus);
 
 export default router;

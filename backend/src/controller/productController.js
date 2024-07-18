@@ -27,7 +27,10 @@ export const createProduct = async (req, res) => {
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    res.status(200).json(products);
+    res.status(200).json({
+      length: products.length,
+      products
+    });
   } catch (err) {
     handleCatchError(err, 'getProducts', res);
   }
