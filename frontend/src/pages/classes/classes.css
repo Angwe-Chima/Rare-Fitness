@@ -1,0 +1,94 @@
+.classes{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.classes .classBanner{
+  width: 90%;
+  margin-top: 7em;
+  height: 50vh;
+  border-radius: 1rem;
+  background-image:linear-gradient(to top left, rgb(0, 0, 0), rgba(0, 0, 0, 0.238)),url(../../images/background1.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.classBanner h1{
+  color: white;
+  font-family: "Play Pretend", sans-serif;
+  letter-spacing: 2px;
+  font-size: 2.8rem;
+}
+
+.classes section{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em;
+}
+
+.class-cards{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding: 1em;
+}
+
+.class-cards .card{
+  width: 30%;
+  height: 300px;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 0px 10px 1px rgba(128, 128, 128, 0.281);
+}
+
+.class-cards .card img{
+  width: 100%;
+  border-radius: .5rem;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(2);
+}
+
+.class-cards .card p{
+  position: absolute;
+  height: 25%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  bottom: 0;
+  border-radius: 0rem .5rem 0rem 0rem;
+  left: 0;
+  background-color: #0000006d;
+  backdrop-filter: blur(10px);
+  font-weight: bold; 
+  transition: .6s;
+  color: white;
+  font-size: 1rem;
+}
+
+
+.class-cards .card p:hover{
+  width: 100%;
+  font-size:2rem;
+  height: 100%;
+}

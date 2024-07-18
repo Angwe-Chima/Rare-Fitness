@@ -24,8 +24,7 @@ const Home = () => {
 
       <section className="choose-us">
         <div className="card-title">
-          <h2>Why Choose Us</h2>
-          <p>Build Your Best Body</p>
+          <h2>Achieve Your Ideal Physique</h2>
         </div>
         <div className="cards">
           <div className="card">

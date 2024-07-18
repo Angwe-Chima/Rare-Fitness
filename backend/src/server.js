@@ -3,8 +3,10 @@ import dotenv from "dotenv";
 import connectToMongoDB from "./configuration/dbConfig.js";
 import cookieParser from "cookie-parser";
 import authRoute from "./routes/authRoute.js";
+import productRoute from './routes/productRoute.js';
 import createAdminAccount from "./scripts/admin.js";
 import cors from "cors";
+
 
 dotenv.config();
 
@@ -29,6 +31,7 @@ app.use(cookieParser());
 
 // Routes
 app.use("/user", authRoute);
+app.use("/shop", productRoute)
 
 const port = process.env.PORT || 3000;
 

@@ -77,10 +77,17 @@ function Register() {
 
       // Check if the response status indicates success (e.g., status code 200)
       if (response.status === 200) {
+        const { role } = response.data;
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userName", response.data.fullName);
         setSuccess(true);
-        navigate("/");
+        
+        // Redirect based on role
+        if (role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       } else {
         throw new Error("Login failed");
       }
@@ -143,7 +150,7 @@ function Register() {
             <div className="input-div">
               <label htmlFor="password">Password</label>
               <input
-                type="text"
+                type="password"
                 id="password"
                 name="password"
                 autoComplete="off"

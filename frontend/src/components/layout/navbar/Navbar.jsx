@@ -110,7 +110,7 @@ function Navbar() {
           </button>
           <div className="cart-div">
             <img className="cart-img" src={cartImg} alt="Profile" />
-            <span>2</span>
+            <span>22</span>
           </div>
         </div>
       </div>

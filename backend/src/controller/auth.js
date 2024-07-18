@@ -70,7 +70,8 @@ export const login = async (req, res) => {
       fullName: foundUser.fullName,
       user: foundUser.user,
       email: foundUser.email,
-      token, // Include the token in the response
+      role: foundUser.role,
+      token,
     });
   } catch (err) {
     handleCatchError(err, "login", res);

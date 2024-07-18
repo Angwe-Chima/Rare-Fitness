@@ -1,8 +1,11 @@
+import './dashBoard.css';
 
 function DashBoard() {
   return (
-    <div>DashBoard</div>
+    <div>
+      
+    </div>
   )
 }
 
-export default DashBoard
+export default DashBoard;

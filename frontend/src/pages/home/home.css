@@ -51,7 +51,7 @@
 }
 
 .hero > div:nth-child(1) h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   width: 80%;
   letter-spacing: 4px;
 }
@@ -63,14 +63,17 @@
 .hero > div:nth-child(1) p {
   font-size: 1.5rem;
   width: 50%;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .hero > div:nth-child(1) a {
   padding: 1em 4em;
   border-radius: 100vw;
-  font-family: sans-serif;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
   background-color: orangered;
   text-decoration: none;
   color: white;
@@ -86,8 +89,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 4em;
-  gap: 3em;
+  padding: 5em 2em;
+  gap: 4em;
   background-image: url(../../images/image-group.png);
   background-size: 20%;
   background-position: center;
@@ -97,9 +100,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  gap: 1em;
 }
 
 .card-title h2 {
@@ -117,11 +118,6 @@
   height: 3px;
 }
 
-.card-title p {
-  color: orangered;
-  font-family: cursive;
-}
-
 .cards {
   width: 100%;
   display: flex;
@@ -131,7 +127,7 @@
 }
 
 .cards .card {
-  background-color: rgb(19, 19, 19);
+  background-color: rgb(26, 25, 25);
   width: 20%;
   display: flex;
   justify-content: center;
@@ -159,7 +155,8 @@
 
 .card h3 {
   color: orangered;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
 }
 
 /* ////////////////// */

@@ -81,6 +81,8 @@
 
 .right-nav div:nth-child(1) p {
   font-size: 12px;
+  font-family: monospace;
+  padding: .05em;
 }
 
 .right-nav div:nth-child(1) img {
@@ -122,8 +124,7 @@
 }
 
 .cart-div span{
-  font-size:.9rem;
-  top: -25%;
-  text-shadow: 2px 2px 3px black;
+  font-size:.8rem;
+  top: -30%;
   position: absolute;
 }
