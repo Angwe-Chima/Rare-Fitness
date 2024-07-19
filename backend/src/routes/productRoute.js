@@ -15,7 +15,7 @@ import authMiddleware from "../utils/authMiddleware.js";
 router.post("/", authMiddleware, createProduct);
 
 // Route to get all products
-router.get("/", getProducts);
+router.get("/", authMiddleware, getProducts);
 
 // Route to get a product by ID
 router.get("/:id", authMiddleware, getProductById);

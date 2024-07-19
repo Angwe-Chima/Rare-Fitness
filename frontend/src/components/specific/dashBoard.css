@@ -1,0 +1,62 @@
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(204, 202, 202);
+}
+
+nav{
+  width: 100%;
+  background-color: black;
+  padding: 1.5em;
+}
+
+nav a{
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+nav a::before{
+  position: absolute;
+  content: '';
+  width: 60%;
+  height: 2px;
+  background-color: orangered;
+  bottom: -2%;
+  transition: .4s;
+}
+
+nav a:hover::before{
+  width: 100%;
+}
+
+.boxes {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+.box {
+  width: 20%;
+  height: 180px;
+  padding: 1em;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.845), rgb(0, 0, 0));
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  color: white;
+  text-decoration: none;
+  flex-direction: column;
+  text-shadow: 0px 0px 10px;
+}
+
+.box p {
+  font-size: 1.2rem;
+}

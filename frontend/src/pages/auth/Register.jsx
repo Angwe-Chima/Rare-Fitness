@@ -80,7 +80,7 @@ function Register() {
     }
     try {
       await axios.post(
-        "/register",
+        "auth/register",
         JSON.stringify({ user, fullName, email, password }),
         {
           headers: { "Content-Type": "application/json" },

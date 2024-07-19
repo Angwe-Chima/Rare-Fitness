@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "./api/axios"; // Adjust the path according to your folder structure
 import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Logout from "./pages/auth/Logout";
@@ -12,6 +14,18 @@ import CoursesData from "./pages/classes/courses/CoursesData";
 function App() {
   const location = useLocation();
   const hideNavbarPaths = ["/dashboard"];
+
+  useEffect(() => {
+    const incrementVisitorCount = async () => {
+      try {
+        await axios.post("/visitor");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    incrementVisitorCount();
+  }, []);
 
   return (
     <>

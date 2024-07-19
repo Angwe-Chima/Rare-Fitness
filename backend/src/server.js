@@ -6,6 +6,7 @@ import authRoute from "./routes/authRoute.js";
 import productRoute from "./routes/productRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import userRoute from "./routes/userRoute.js";
+import visitorRoute from './routes/visitorRoute.js'
 import createAdminAccount from "./scripts/admin.js";
 import cors from "cors";
 
@@ -37,6 +38,7 @@ app.use("/auth", authRoute);
 app.use("/shop", productRoute);
 app.use("/order", orderRoute);
 app.use("/user", userRoute);
+app.use("/visitor", visitorRoute);
 
 const port = process.env.PORT || 3000;
 

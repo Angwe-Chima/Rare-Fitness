@@ -11,7 +11,7 @@ import {
 
 import authMiddleware from '../utils/authMiddleware.js';
 
-// Route to create a new user
+// Route to create a new user (protected, admin only)
 router.post('/', authMiddleware, createUser);
 
 // Route to get all users (protected, admin only)

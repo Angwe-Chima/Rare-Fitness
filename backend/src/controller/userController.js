@@ -35,7 +35,10 @@ export const createUser = async (req, res) => {
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find();
-    res.status(200).json(users);
+    res.status(200).json({
+      length: users.length,
+      data: users
+    });
   } catch (err) {
     handleCatchError(err, 'getUsers', res);
   }
