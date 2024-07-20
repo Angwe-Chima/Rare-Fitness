@@ -17,7 +17,7 @@ export const createOrder = async (req, res) => {
         return {
           product: product._id,
           quantity: item.quantity,
-          price: product.price,
+          // Remove price from here since it's calculated dynamically
         };
       })
     );
@@ -25,7 +25,7 @@ export const createOrder = async (req, res) => {
     const newOrder = new Order({
       user: req.user._id, // Assuming req.user is populated with the authenticated user
       products: productDetails,
-      totalPrice,
+      totalPrice, // Correct totalPrice is now dynamically calculated
     });
 
     await newOrder.save();

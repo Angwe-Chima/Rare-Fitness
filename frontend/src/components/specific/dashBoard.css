@@ -7,7 +7,10 @@
 nav{
   width: 100%;
   background-color: black;
-  padding: 1.5em;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 nav a{
@@ -23,12 +26,22 @@ nav a::before{
   width: 60%;
   height: 2px;
   background-color: orangered;
-  bottom: -2%;
+  bottom: -1px;
   transition: .4s;
 }
 
 nav a:hover::before{
   width: 100%;
+}
+
+
+nav button{
+ background-color: limegreen;
+ padding: .8em 2em;
+ font-weight: bold;
+ border: none;
+ border-radius: 100vw;
+ color: white;
 }
 
 .boxes {
@@ -45,18 +58,35 @@ nav a:hover::before{
   width: 20%;
   height: 180px;
   padding: 1em;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.845), rgb(0, 0, 0));
+  background-image: linear-gradient(rgba(28, 28, 28, 0.845), rgba(0, 0, 0, 0.87));
   border-radius: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2em;
+  gap: 1em;
   color: white;
   text-decoration: none;
   flex-direction: column;
-  text-shadow: 0px 0px 10px;
+  transition: .4s;
+}
+
+.box:hover{
+  background-color: black;
+}
+
+.box:nth-child(4){
+  background-color: black;
 }
 
 .box p {
   font-size: 1.2rem;
+}
+
+.box a{
+  padding: .4em 3em;
+  text-decoration: none;
+  background-color: orangered;
+  border-radius: 100vw;
+  font-size: .8rem;
+  color: white;
 }

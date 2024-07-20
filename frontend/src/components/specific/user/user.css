@@ -1,0 +1,44 @@
+.users {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(204, 202, 202);
+  position: relative;
+}
+
+.users h1 {
+  text-align: center;
+}
+
+.allUsers {
+  display: flex;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.allUsers > div {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  gap: 0.5em;
+  text-align: center;
+  min-width: 250px;
+  width: 20%;
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.allUsers > div span {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  left: 0;
+}

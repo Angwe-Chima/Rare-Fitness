@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import { useEffect } from "react";
 import axios from "./api/axios"; // Adjust the path according to your folder structure
 import Register from "./pages/auth/Register";
@@ -10,10 +15,13 @@ import Navbar from "./components/layout/navbar/Navbar";
 import DashBoard from "./components/specific/DashBoard";
 import "./css/App.css";
 import CoursesData from "./pages/classes/courses/CoursesData";
+import User from "../src/components/specific/user/User";
+import Product from "../src/components/specific/product/Product";
+import Order from "../src/components/specific/order/Order";
 
 function App() {
   const location = useLocation();
-  const hideNavbarPaths = ["/dashboard"];
+  const hideNavbarPaths = ["/dashboard", "/dashboard/product", "/dashboard/user", "/dashboard/order"];
 
   useEffect(() => {
     const incrementVisitorCount = async () => {
@@ -37,6 +45,9 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/dashboard/user" element={<User />} />
+        <Route path="/dashboard/product" element={<Product />} />
+        <Route path="/dashboard/order" element={<Order />} />
         {CoursesData.map((element) => (
           <Route
             key={element.id}

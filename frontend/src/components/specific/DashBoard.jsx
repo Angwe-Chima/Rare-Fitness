@@ -8,28 +8,28 @@ const DashBoard = () => {
   const [orderCount, setOrderCount] = useState(0);
   const [visitorCount, setVisitorCount] = useState(0);
 
+  const fetchCounts = async () => {
+    try {
+      const usersResponse = await axios.get("/user");
+      setUserCount(usersResponse.data.length);
+
+      const productsResponse = await axios.get("/shop");
+      setProductCount(productsResponse.data.length);
+
+      const ordersResponse = await axios.get("/order");
+      setOrderCount(ordersResponse.data.length);
+
+      const visitorsResponse = await axios.get("/visitor");
+      setVisitorCount(visitorsResponse.data.count);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchCounts = async () => {
-      try {
-        const usersResponse = await axios.get("/user");
-        setUserCount(usersResponse.data.length);
-
-        const productsResponse = await axios.get("/shop");
-        setProductCount(productsResponse.data.length);
-
-        const ordersResponse = await axios.get("/order");
-        setOrderCount(ordersResponse.data.length);
-
-        const visitorsResponse = await axios.get("/visitor");
-        setVisitorCount(visitorsResponse.data.count);
-
-        console.log(usersResponse);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
     fetchCounts();
+    const intervalId = setInterval(fetchCounts, 5000); // fetch every 5 seconds
+    return () => clearInterval(intervalId); // cleanup on component unmount
   }, []);
 
   return (
@@ -38,22 +38,25 @@ const DashBoard = () => {
         <a href="/">Home</a>
       </nav>
       <div className="boxes">
-        <a className="box">
+        <div className="box">
           <p>Users</p>
           <h2>{userCount}</h2>
-        </a>
-        <a className="box">
+          <a href="/dashboard/user">Details</a>
+        </div>
+        <div className="box">
           <p>Products</p>
           <h2>{productCount}</h2>
-        </a>
-        <a className="box">
+          <a href="/dashboard/product">Details</a>
+        </div>
+        <div className="box">
           <p>Orders</p>
           <h2>{orderCount}</h2>
-        </a>
-        <a className="box">
+          <a href="/dashboard/order">Details</a>
+        </div>
+        <div className="box">
           <p>Page Views</p>
           <h2>{visitorCount}</h2>
-        </a>
+        </div>
       </div>
     </div>
   );

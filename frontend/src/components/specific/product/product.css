@@ -1,0 +1,148 @@
+.products {
+  width: 100%;
+  background-color: rgb(204, 202, 202);
+  position: relative;
+}
+
+.products h1 {
+  text-align: center;
+  padding: .8em;
+}
+
+.allProducts {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.allProducts > div {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  gap: 0.5em;
+  text-align: center;
+  min-width: 250px;
+  width: 23%;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.rates {
+  display: flex;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
+
+.allProducts > div p {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.allProducts span {
+  font-size: 14px;
+  color: rgb(120, 3, 3);
+}
+
+.allProducts a {
+  font-size: 13px;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  color: orangered;
+  text-decoration: none;
+}
+
+.description{
+  font-size: 14px;
+}
+
+/*  */
+
+.editForm {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.653);
+  backdrop-filter: blur(10px);
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .5em;
+  color: white;
+  padding: 1em;
+}
+
+.editForm form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: .8em;
+  flex-direction: column;
+}
+
+.editForm form label{
+  width: 100%;
+  gap: .4em;
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  flex-direction: column;
+}
+
+.editForm form input{
+  width: 60%;
+}
+
+.editForm form span{
+  width: 60%;
+  display: flex;
+  justify-content: start;
+}
+
+.editForm form button{
+  padding: .5em 2em;
+  background-color: rgb(35, 35, 35);
+  border-radius: 100vw;
+  color: white;
+  border: none;
+  font-weight: bold;
+}
+
+.formBtns{
+  padding: 1em;
+  display: flex;
+  flex-direction: row-reverse;
+  width: 55%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formBtns .save{
+  background-color: limegreen;
+}
+
+.formBtns .delete{
+  background-color: red;
+}
+

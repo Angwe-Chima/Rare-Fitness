@@ -18,26 +18,14 @@ const orderSchema = new mongoose.Schema(
           type: Number,
           required: true,
           min: 1,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
+        }
       },
     ],
-    totalPrice: {
-      type: Number,
-      required: true,
-    },
     status: {
       type: String,
       enum: ['pending', 'completed', 'cancelled'],
       default: 'pending',
-    },
-    orderDate: {
-      type: Date,
-      default: Date.now,
-    },
+    }
   },
   { timestamps: true }
 );
