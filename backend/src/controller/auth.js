@@ -5,7 +5,12 @@ import handleCatchError from "../utils/handleCatchError.js";
 
 export const register = async (req, res) => {
   try {
-    const { fullName, user, email, password } = req.body;
+    const { fullName, user, email, password, confirmPassword } = req.body;
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        error: "passwords do not match",
+      });
+    }
 
     const foundUser = await User.findOne({ user });
     if (foundUser) {
@@ -84,5 +89,37 @@ export const logout = async (req, res) => {
     res.status(200).send({ message: "Logged out successfully" });
   } catch (err) {
     handleCatchError(err, "logout", res);
+  }
+};
+
+export const checkEmail = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+    if (user) {
+      return res.status(200).json({ message: "Email exists" });
+    } else {
+      return res.status(404).json({ error: "Email not found" });
+    }
+  } catch (err) {
+    handleCatchError(err, "checkEmail", res);
+  }
+};
+
+export const resetPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({ message: "Password reset successful" });
+  } catch (err) {
+    handleCatchError(err, "resetPassword", res);
   }
 };

@@ -1,20 +1,17 @@
 .register {
-  width: 90%;
+  width: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: space-between;
-  padding: 2em;
-}
-
-.left {
-  width: 35%;
-  height: 600px;
-  border-radius: 1em;
-  background-image: linear-gradient(rgba(20, 7, 3, 0.06), rgba(0, 0, 0, 0.718)),
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1em;
+  background-image: linear-gradient(rgba(20, 7, 3, 0.359), rgba(0, 0, 0, 0.718)),
     url(../../images/background-gym.jpg);
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 0px 10px 1px gray;
 }
+
 
 .top > button {
   background-color: orangered;
@@ -28,9 +25,9 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 2em;
+  gap: 1em;
   flex-direction: column;
-  padding: 2em;
+  padding: 1em;
 }
 
 .right .signup-opt {
@@ -40,7 +37,7 @@
   align-items: start;
   flex-direction: column;
   gap: 1em;
-  color: black;
+  color: white;
 }
 
 .signup-opt > div a img {
@@ -54,7 +51,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1em;
 }
 
 .whole form .dbl-input {
@@ -101,14 +98,21 @@ form input:focus {
 
 form label {
   font-size: 13px;
-  color: black;
+  color: white;
 }
 
 .btn-div {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  gap: 5em;
 }
+
+.btn-div a{
+  color: white;
+  font-size: 13px;
+}
+
 
 .btn-div button {
   padding: 0.8em 3em;
@@ -158,7 +162,8 @@ form label {
     rgba(0, 0, 0, 0.323),
     rgba(0, 0, 0, 0.632)
   );
-  box-shadow: 0px 0px 10px 1px rgba(128, 128, 128, 0.525);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.319);
 }
 
 .right .top {
@@ -184,9 +189,9 @@ form label {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 2em;
+  gap: 1em;
   flex-direction: column;
-  padding: 2em;
+  padding: 1.5em;
 }
 
 .signup-opt > div {
@@ -221,8 +226,8 @@ form label {
 }
 .whole .or span {
   width: 40%;
-  height: 1px;
-  background-color: black;
+  height: 2px;
+  background-color: white;
 }
 
 .whole form {
@@ -231,7 +236,7 @@ form label {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1em;
 }
 .input-div {
   display: flex;
@@ -294,4 +299,42 @@ form label {
   text-decoration: none;
   border-radius: 100vw;
   font-size: 0.9rem;
+}
+
+
+.forgot-password{
+  width: 100%;
+  height: 100vh;
+  background-color: wheat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1em;
+  background-image: linear-gradient(rgba(20, 7, 3, 0.359), rgba(0, 0, 0, 0.718)),
+    url(../../images/background-gym.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.forgot-password form{
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  justify-content: center;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.652);
+  backdrop-filter: blur(5px);
+  border-radius: 1rem;
+}
+
+.forgot-password form button{
+  padding: .6em 2em;
+  border: none;
+  border-radius: 100vw;
+  color: white;
+  font-weight: bold;
+  background-color: orangered;
 }

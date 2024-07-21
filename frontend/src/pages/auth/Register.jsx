@@ -4,7 +4,6 @@ import "./auth.css";
 import googleLogo from "../../images/google-icon.png";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
-import lady from "../../images/fit-lady.png";
 
 const fullNameRegex = /^[a-zA-Z\s'-]{2,}$/;
 const usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
@@ -32,6 +31,10 @@ function Register() {
   const [validPassword, setValidPassword] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(false);
+  const [confirmPasswordFocus, setConfirmPasswordFocus] = useState(false);
+
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -56,8 +59,12 @@ function Register() {
   }, [password]);
 
   useEffect(() => {
+    setPasswordMatch(password === confirmPassword);
+  }, [password, confirmPassword]);
+
+  useEffect(() => {
     setErrMsg("");
-  }, [user, fullName, email, password]);
+  }, [user, fullName, email, password, confirmPassword]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,19 +76,21 @@ function Register() {
       setEmail(value);
     } else if (name === "password") {
       setPassword(value);
+    } else if (name === "confirmPassword") {
+      setConfirmPassword(value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validName || !validFullName || !validEmail || !validPassword) {
+    if (!validName || !validFullName || !validEmail || !validPassword || !passwordMatch) {
       setErrMsg("Please fill out the form correctly.");
       return;
     }
     try {
       await axios.post(
         "auth/register",
-        JSON.stringify({ user, fullName, email, password }),
+        JSON.stringify({ user, fullName, email, password, confirmPassword }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -98,13 +107,10 @@ function Register() {
 
   return (
     <div className="register">
-      <div className="left">
-        <img src={lady} alt="Fitness lady" />
-      </div>
       <div className="right">
         <div className="top">
           <p>Already a member?</p>
-           <Link to="/login">Login</Link>
+          <Link to="/login">Login</Link>
         </div>
 
         <div className="whole">
@@ -209,6 +215,27 @@ function Register() {
                 <p id="passwordNote" className="instructions">
                   Password must be at least 5 characters long and contain at
                   least one number or special character.
+                </p>
+              )}
+            </div>
+            <div className="input-div-1">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                autoComplete="off"
+                value={confirmPassword}
+                onChange={handleChange}
+                required
+                aria-invalid={passwordMatch ? "false" : "true"}
+                aria-describedby="confirmPasswordNote"
+                onFocus={() => setConfirmPasswordFocus(true)}
+                onBlur={() => setConfirmPasswordFocus(false)}
+              />
+              {confirmPasswordFocus && confirmPassword && !passwordMatch && (
+                <p id="confirmPasswordNote" className="instructions">
+                  Passwords do not match.
                 </p>
               )}
             </div>

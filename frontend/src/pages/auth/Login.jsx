@@ -3,7 +3,6 @@ import "./auth.css";
 import googleLogo from "../../images/google-icon.png";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
-import guy from "../../images/fit-guy.png";
 import { Link } from "react-router-dom";
 
 // Regular expressions for validation
@@ -99,9 +98,6 @@ function Register() {
 
   return (
     <div className="register">
-      <div className="left">
-        <img src={guy} alt="" />
-      </div>
       <div className="right">
         <div className="top">
           <p>Do not have an account?</p>
@@ -171,6 +167,7 @@ function Register() {
             </div>
 
             <div className="btn-div">
+              <Link to="/forgot-password">Forgot password?</Link>
               <button type="submit">Login</button>
             </div>
 

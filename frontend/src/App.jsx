@@ -18,10 +18,10 @@ import CoursesData from "./pages/classes/courses/CoursesData";
 import User from "../src/components/specific/user/User";
 import Product from "../src/components/specific/product/Product";
 import Order from "../src/components/specific/order/Order";
-
+import ForgotPassword from "./pages/auth/ForgotPassword";
 function App() {
   const location = useLocation();
-  const hideNavbarPaths = ["/dashboard", "/dashboard/product", "/dashboard/user", "/dashboard/order"];
+  const hideNavbarPaths = ["/dashboard", "/dashboard/product", "/dashboard/user", "/dashboard/order", "/forgot-password"];
 
   useEffect(() => {
     const incrementVisitorCount = async () => {
@@ -43,6 +43,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/dashboard/user" element={<User />} />

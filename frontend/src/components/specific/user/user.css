@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1em;
+  padding: 2em .8em;
   gap: 0.5em;
   text-align: center;
   min-width: 250px;
