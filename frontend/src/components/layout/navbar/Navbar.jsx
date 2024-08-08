@@ -2,21 +2,28 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../../images/RF-white-logo.png";
 import cartImg from "../../../images/cart-img.svg";
-import { useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ShopContext } from "../../../contexts/ShopContext";
+
 
 function Navbar() {
-  const [menu, setMenu] = useState(localStorage.getItem("menu") || "home");
+  const {getTotalCartItems} = useContext(ShopContext);
+  
   const navigate = useNavigate();
   const location = useLocation();
 
-  const getClassName = (menuItem) => {
-    return menu === menuItem ? "active" : "";
-  };
+  const [menu, setMenu] = useState(location.pathname);
 
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
 
   const hideNavbar = ["/login", "/logout", "/register"].includes(location.pathname);
+
+  useEffect(() => {
+    setMenu(location.pathname);
+  }, [location.pathname]);
+
+  const getClassName = (menuItem) => (menu === menuItem ? "active" : "");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -24,13 +31,8 @@ function Navbar() {
     navigate("/login");
   };
 
-  useEffect(() => {
-    localStorage.setItem("menu", menu);
-  }, [menu]);
-
-  // Ensure hooks are always called
   if (hideNavbar) {
-    return <div />;
+    return null; // Return null instead of an empty div for better clarity
   }
 
   return (
@@ -41,8 +43,8 @@ function Navbar() {
       <ul>
         <li>
           <Link
-            className={getClassName("home")}
-            onClick={() => setMenu("home")}
+            className={getClassName("/")}
+            onClick={() => setMenu("/")}
             to="/"
           >
             Home
@@ -50,8 +52,8 @@ function Navbar() {
         </li>
         <li>
           <Link
-            className={getClassName("classes")}
-            onClick={() => setMenu("classes")}
+            className={getClassName("/classes")}
+            onClick={() => setMenu("/classes")}
             to="/classes"
           >
             Classes
@@ -59,8 +61,8 @@ function Navbar() {
         </li>
         <li>
           <Link
-            className={getClassName("shop")}
-            onClick={() => setMenu("shop")}
+            className={getClassName("/shop")}
+            onClick={() => setMenu("/shop")}
             to="/shop"
           >
             Shop
@@ -68,8 +70,8 @@ function Navbar() {
         </li>
         <li>
           <Link
-            className={getClassName("about")}
-            onClick={() => setMenu("about")}
+            className={getClassName("/about")}
+            onClick={() => setMenu("/about")}
             to="/about"
           >
             About
@@ -77,8 +79,8 @@ function Navbar() {
         </li>
         <li>
           <Link
-            className={getClassName("contact")}
-            onClick={() => setMenu("contact")}
+            className={getClassName("/contact")}
+            onClick={() => setMenu("/contact")}
             to="/contact"
           >
             Contact
@@ -87,16 +89,14 @@ function Navbar() {
       </ul>
       <div className="right-nav">
         <div>
-          {token ? (
+          {token && (
             <img
               className="cart-img"
               src="https://avatar.iran.liara.run/public/"
               alt="Profile"
             />
-          ) : (
-            ""
           )}
-          <p>{userName ? userName : "Not logged in "}</p>
+          <p>{userName || "Not logged in"}</p>
         </div>
         <div>
           <button>
@@ -109,8 +109,8 @@ function Navbar() {
             )}
           </button>
           <div className="cart-div">
-            <img className="cart-img" src={cartImg} alt="Profile" />
-            <span>22</span>
+            <a href="/cart"><img className="cart-img" src={cartImg} alt="Cart" /></a>
+            <span>{getTotalCartItems()}</span>
           </div>
         </div>
       </div>

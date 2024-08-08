@@ -20,7 +20,14 @@ import User from "../src/components/specific/user/User";
 import Product from "../src/components/specific/product/Product";
 import Order from "../src/components/specific/order/Order";
 import ForgotPassword from "./pages/auth/ForgotPassword";
+import { useContext } from "react";
+import {ShopContext} from './contexts/ShopContext'
+import Shop from './pages/shop/Shop'
+import Productt from './pages/product/Product'
+import Cart from './pages/cart/Cart'
+
 function App() {
+  const { products } = useContext(ShopContext)
   const location = useLocation();
   const hideNavbarPaths = ["/dashboard", "/dashboard/product", "/dashboard/user", "/dashboard/order", "/forgot-password"];
 
@@ -44,6 +51,9 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/Product/:productId" element={<Productt />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<Cart/>} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/classes" element={<Classes />} />

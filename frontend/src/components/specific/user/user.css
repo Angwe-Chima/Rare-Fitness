@@ -22,23 +22,20 @@
   background-color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
-  padding: 2em .8em;
+  padding: 2em 0.8em;
   gap: 0.5em;
   text-align: center;
   min-width: 250px;
-  width: 20%;
+  width: 25%;
   position: relative;
   border-radius: 0.5rem;
 }
 
-.allUsers > div span {
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  position: absolute;
-  top: 0;
-  cursor: pointer;
-  left: 0;
+.allUsers div div {
+  display: flex;
+  width: 95%;
+  justify-content: center;
+  gap: 1em;
 }

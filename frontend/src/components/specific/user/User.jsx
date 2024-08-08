@@ -21,7 +21,7 @@ const User = () => {
   const handleDeleteUser = async (userId) => {
     try {
       await axios.delete(`/user/${userId}`);
-      setUsers(users.filter(user => user._id !== userId));
+      setUsers(users.filter((user) => user._id !== userId));
     } catch (err) {
       console.error(err);
     }
@@ -36,10 +36,26 @@ const User = () => {
       <div className="allUsers">
         {users.map((user) => (
           <div key={user.id}>
-            <h3>{user.user}</h3>
-            <h4>{user.fullName}</h4>
-            <p>{user.email}</p>
-            <span onDoubleClick={() => handleDeleteUser(user._id)} ></span>
+            <div>
+              <span>User Name: </span>
+              <h3>{user.user}</h3>
+            </div>
+            <div>
+              <span>Full Name: </span>
+              <h4>{user.fullName}</h4>
+            </div>
+            <div>
+              <span>Email: </span>
+              <p>{user.email}</p>
+            </div>
+            <div>
+              <span>Register Date</span>
+              {new Date(user.createdAt).toLocaleString()}
+            </div>
+            <span
+              className="delete"
+              onDoubleClick={() => handleDeleteUser(user._id)}
+            ></span>
           </div>
         ))}
       </div>
