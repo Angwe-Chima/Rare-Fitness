@@ -7,7 +7,8 @@
 body {
   width: 100%;
   font-family: "Oswald", sans-serif;
-  font-optical-sizing: auto;}
+  font-optical-sizing: auto;
+}
 
 #root {
   width: 100%;

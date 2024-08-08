@@ -131,7 +131,7 @@ const Product = () => {
       <h1>Product Details</h1>
       <div className="allProducts">
         {products.map((product) => (
-          <div key={product._id} onClick={() => handleEditClick(product)}>
+          <div key={product._id} onDoubleClick={() => handleEditClick(product)}>
             <h3>{product.name}</h3>
             <p>
               <span>Price:</span>
@@ -149,7 +149,7 @@ const Product = () => {
               <span>Stock: </span>
               {product.stock}
             </p>
-            <a href={product.imageUrl}>
+            <a>
               <span>Image: </span>
               {product.imageUrl}
             </a>
@@ -244,7 +244,9 @@ const Product = () => {
               />
             </label>
             <div className="formBtns">
-              <button className="save" type="submit">Save</button>
+              <button className="save" type="submit">
+                Save
+              </button>
               <button type="button" onClick={() => setFormVisible(false)}>
                 Cancel
               </button>

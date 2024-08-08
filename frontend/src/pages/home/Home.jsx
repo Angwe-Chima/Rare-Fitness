@@ -73,9 +73,9 @@ const Home = () => {
             goals. With a team of expert trainers and state-of-the-art
             facilities, we provide a supportive and motivating environment for
             all fitness levels. Our personalized programs are designed to
-            enhance your strength, endurance, and overall well-being. Join us
-            and transform your body, mind, and life.
+            enhance your strength, endurance, and overall well-being
           </p>
+          <button>Learn More</button>
         </div>
         <div className="side-img">
           <img src={backgroundAbout} alt="" />

@@ -1,0 +1,12 @@
+.subClass .danceDiv {
+  width: 90%;
+  border-radius: 1rem;
+  height: 50vh;  background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
+    url(https://media.istockphoto.com/id/1434359956/photo/male-urban-dancer-in-the-air.webp?b=1&s=170667a&w=0&k=20&c=BeG_nrAZ5ipR52qE_4TIc8J8mOtItYGXiodcZO1Ukzg=);
+  background-size: 90%;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}

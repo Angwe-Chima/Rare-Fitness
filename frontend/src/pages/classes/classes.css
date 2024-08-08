@@ -24,7 +24,9 @@
   color: white;
   font-family: "Play Pretend", sans-serif;
   letter-spacing: 2px;
-  font-size: 2.8rem;
+  text-align: center;
+  font-size: clamp(1.7rem, 3rem, 4vw);
+  
 }
 
 .classes section{
@@ -34,7 +36,7 @@
   align-items: center;
   flex-direction: column;
   gap: 2em;
-  padding: 2em;
+  padding: 1em;
 }
 
 .class-cards{
@@ -44,12 +46,12 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 2em;
-  padding: 1em;
+  padding: .5em;
 }
 
 .class-cards .card{
-  width: 30%;
-  height: 300px;
+  width: clamp(380px, 30%, 25vw);
+  height: 320px;
   border-radius: .5rem;
   display: flex;
   justify-content: space-between;

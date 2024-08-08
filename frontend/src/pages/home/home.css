@@ -91,9 +91,9 @@
   align-items: center;
   padding: 5em 2em;
   gap: 4em;
-  background-image: url(../../images/image-group.png);
-  background-size: 20%;
-  background-position: center;
+  /* background-image: url(../../images/image-group.png); */
+    /* background-size: 20%;
+    background-position: center; */
 }
 
 .card-title {
@@ -165,7 +165,7 @@
   background-image: linear-gradient(to top left, black, rgba(0, 0, 0, 0.448)),
     url(../../images/background1.jpg);
   background-position: left;
-  background-size: 100%;
+  background-size:cover;
   height: 80vh;
   display: flex;
   justify-content: space-evenly;
@@ -222,4 +222,15 @@
   height: 100%;
   object-fit: cover;
   border-radius: 1rem;
+}
+
+
+.about-us button{
+  padding: .8em 1em;
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+  border: none;
+  width: 40%;
+  border-radius: 100vw;
 }

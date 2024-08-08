@@ -1,0 +1,163 @@
+.subClass {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7em;
+}
+
+.subClass .aquaticDiv {
+  width: 90%;
+  border-radius: 1rem;
+  height: 50vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
+    url(https://plus.unsplash.com/premium_photo-1664475361436-e37f6f2ba407?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.subClass > div > div {
+  width: clamp(300px, 50%, 50vw);
+  background-color: rgba(0, 0, 0, 0.215);
+  padding: 2em 1em;
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  color: white;
+  border-radius: 0rem 1rem 1rem 0rem;
+  gap: 1em;
+}
+
+.subClass > div > div > h2 {
+  font-size: clamp(1rem, 2.5rem, 3vw);
+}
+.subClass > div > div > p {
+  font-size: clamp(0.8rem, 1rem, 3vw);
+}
+
+.subClass section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.subClass section > h2 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.subClass .classDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+  padding: 1em;
+}
+
+.subClass .classDiv .card {
+  width: clamp(340px, 70%, 70vw);
+  height: clamp(8em, 20em, 55vw);
+  border-radius: 1rem;
+  background-color: white;
+  /* border: 2px solid black; */
+  display: flex;
+  box-shadow: 0px 0px 8px 2px rgba(128, 128, 128, 0.392);
+}
+
+.classDiv .classImgDiv {
+  width: 40%;
+  background-image: url(https://plus.unsplash.com/premium_photo-1664475361436-e37f6f2ba407?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  border-radius: 1rem 0rem 0rem 1rem;
+}
+
+.classDiv .classDetDiv {
+  width: 60%;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.classDetDiv .classTop {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.classTop h2 {
+  letter-spacing: 0.01rem;
+  font-size: clamp(0.8rem, 2rem, 1.8vw);
+}
+
+.classTop .time {
+  width: 40%;
+  display: flex;
+  justify-content: end;
+  gap: .5em;
+  align-items: center;
+}
+
+.time img {
+  width: 1.5em;
+}
+
+.time span{
+  font-size: clamp(.7rem, 1rem, 3vw);
+}
+.classDetDiv .classMid {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.classMid p {
+  width: 100%;
+  font-size: clamp(0.6rem, 1rem, 2.5vw);
+  opacity: 0.9;
+  text-align: start;
+}
+
+.classDetDiv .classBtm {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.classBtm button {
+  padding: 0.7em 2em;
+  background-color: orangered;
+  border-radius: 0.5vw;
+  border: none;
+  color: white;
+  font-size: clamp(.5rem, .9rem, 2vw);
+  cursor: not-allowed;
+  transition: 0.4s;
+}
+
+.classBtm button:hover {
+  background-color: rgb(157, 40, 7);
+}
+
+.classBtm p{
+ font-size: clamp(.6rem, 1rem, 3vw);
+}

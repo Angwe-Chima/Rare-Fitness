@@ -1,0 +1,12 @@
+.subClass .indoorDiv {
+  width: 90%;
+  border-radius: 1rem;
+  height: 50vh;  background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
+    url(https://plus.unsplash.com/premium_photo-1663036931581-e4bcf1560c10?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8VFJYJTIwVHJhaW5pbmd8ZW58MHx8MHx8fDA%3D);
+  background-size: 90%;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}

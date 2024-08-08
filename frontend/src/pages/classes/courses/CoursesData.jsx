@@ -13,7 +13,7 @@ export default [
     id: 'course1',
     urlTitle: 'aquatic',
     title: 'Aquatic',
-    courseImg: "https://images.unsplash.com/photo-1600965962102-9d260a71890d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3dpbW1pbmd8ZW58MHx8MHx8fDA%3D",
+    courseImg: "https://plus.unsplash.com/premium_photo-1664475361436-e37f6f2ba407?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     Component: Aquatic
   },
   {

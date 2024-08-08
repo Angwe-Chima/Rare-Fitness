@@ -12,7 +12,7 @@ const createAdminAccount = async (req, res) => {
     });
 
     if (!existsAdmin) {
-      const hashedPassword = await bcrypt.hash("admin123", 10);
+      const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
       const newAdmin = new User({
         user: "Admin",
         email: "angwechima@gmail.com", 

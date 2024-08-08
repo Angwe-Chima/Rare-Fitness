@@ -11,6 +11,7 @@ import Login from "./pages/auth/Login";
 import Logout from "./pages/auth/Logout";
 import Home from "./pages/home/Home";
 import Classes from "./pages/classes/Classes";
+import Contact from "./pages/contact/Contact";
 import Navbar from "./components/layout/navbar/Navbar";
 import DashBoard from "./components/specific/DashBoard";
 import "./css/App.css";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/classes" element={<Classes />} />
         <Route path="/dashboard" element={<DashBoard />} />
         <Route path="/dashboard/user" element={<User />} />
