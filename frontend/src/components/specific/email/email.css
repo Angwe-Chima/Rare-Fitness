@@ -1,0 +1,42 @@
+.emails {
+  width: 100%;
+  background-color: rgb(204, 202, 202);
+  position: relative;
+  min-height: 100vh;
+}
+
+.emails h1 {
+  text-align: center;
+  padding: .8em;
+}
+
+.allEmails {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.allEmails > div {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em;
+  gap: 0.5em;
+  text-align: center;
+  min-width: 250px;
+  width: 23%;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: .4s;
+}
+
+
+.allEmails div:active{
+  background-color: gray;
+}

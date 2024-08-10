@@ -1,15 +1,45 @@
+import { useState } from "react";
+import axios from '../../api/axios.js'; // Ensure axios is properly set up
 import "./contact.css";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState(""); // State to track submission status
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Update the endpoint to match your API route
+      await axios.post("/email", formData); // Sending POST request to /api/emails
+      setStatus("Message sent successfully!");
+      setFormData({ fullName: "", email: "", phone: "", message: "" }); // Clear the form fields
+    } catch (error) {
+      console.error("There was an error sending the message!", error);
+      setStatus("Failed to send message, please try again later.");
+    }
+  };
+
   return (
     <div className="contact">
+      {/* First Section */}
       <div className="image-container1">
         <div className="text-overlay">
           <h3>Our Contact</h3>
-          <p>
-            Reach out to us with any questions or concerns you may have, and
-            well be happy to help!
-          </p>
+          <p>Reach out to us with any questions or concerns you may have, and we'll be happy to help!</p>
         </div>
       </div>
 
@@ -27,7 +57,6 @@ function Contact() {
                 <h3>Email Us</h3>
                 <h5>rarefit@gmail.com</h5>
               </div>
-
               <div>
                 <h3>Gym Studio</h3>
                 <h5>No 12 Lake Avenue Lekki, Lagos Nigeria</h5>
@@ -61,32 +90,55 @@ function Contact() {
           </div>
         </div>
 
-        {/* Right section */}
+        {/* Right section: Form */}
         <div className="right-section">
           <div className="messageText">
             <h2>Send Us A Message</h2>
-            <h5>
-              Were here to help with any inquiries or comments. Drop us a
-              message and well get back to you shortly.
-            </h5>
+            <h5>We're here to help with any inquiries or comments. Drop us a message and we'll get back to you shortly.</h5>
           </div>
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="input-div">
               <label htmlFor="fullName">Full Name</label>
-              <input type="text" />
+              <input
+                type="text"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="input-div">
               <label htmlFor="email">Email</label>
-              <input type="email" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="input-div">
               <label htmlFor="phone">Phone Number</label>
-              <input type="phone" />
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="input-div">
               <label htmlFor="message">Message</label>
-              <textarea name="" id="" rows={15}></textarea>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={15}
+                required
+              ></textarea>
             </div>
+            <button type="submit">Send Message</button>
+            {status && <p className="form-status">{status}</p>} {/* Display status message */}
           </form>
         </div>
       </div>
@@ -98,30 +150,22 @@ function Contact() {
           <details>
             <summary>1. What are your opening hours?</summary>
             <p>Monday-Friday: 6 AM - 10 PM, Weekends: 8 AM - 8 PM.</p>
-            <p>Monday-Friday: 6 AM - 10 PM, Weekends: 8 AM - 8 PM.</p>
           </details>
           <details>
             <summary>2. Do I need to book classes in advance?</summary>
             <p>Yes, advance booking is recommended.</p>
-            <p>Yes, advance booking is recommended.</p>
           </details>
-
           <details>
             <summary>3. Are personal training sessions available?</summary>
             <p>Yes, contact us for details.</p>
           </details>
-
           <details>
             <summary>4. Can I freeze or cancel my membership?</summary>
             <p>Yes, see our membership policy or contact us.</p>
           </details>
-
           <details>
             <summary>5. Do you offer personal training sessions?</summary>
-            <p>
-              Yes, we provide personal training. Contact us for more
-              information.
-            </p>
+            <p>Yes, we provide personal training. Contact us for more information.</p>
           </details>
         </div>
       </div>

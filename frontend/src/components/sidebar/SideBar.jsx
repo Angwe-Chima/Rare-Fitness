@@ -11,8 +11,6 @@ const SideBar = ({
 }) => {
   const brands = [...new Set(products.map((product) => product.brand))];
   const categories = [...new Set(products.map((product) => product.category))];
-
-  console.log(brands);
   
   const handlePriceRangeChange = (e) => {
     setSelectedPriceRange([parseInt(e.target.value), selectedPriceRange[1]]);

@@ -1,0 +1,129 @@
+.about_page{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.mission{
+  width: 90%;
+  display: flex;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.mission .left{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 3em 0em;
+  gap: 1.5em;
+  flex-direction: column;
+}
+
+.mission .left h2{
+ font-size:clamp(2rem,  2.5rem, 3vw);
+ letter-spacing: .08em;
+ font-family: "Play Pretend", sans-serif;
+}
+
+.mission .left p{
+  width: 95%;
+  font-size: .8rem, 1rem, 3vw;
+}
+
+.mission .rightt{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mission .rightt img{
+  width:95%;
+  height: 95%;
+  border-radius: 1rem;
+}
+
+.our_team{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.teamDiv{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  gap: 2em;
+  align-items: center;
+  padding: 1em ;
+}
+
+.teamCard{
+  width: clamp(22em, 85%, 70vw);
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5em;
+  transition: .5s;
+  gap: 1.5em;
+  border-radius: 20vw 0vw 0vw 20vw;
+}
+
+@keyframes slide {
+  0%{
+    transform: translateX(-5em);
+  }100%{
+    transform: translateX(0em);
+  }
+}
+
+.teamCard img{
+  width: clamp(8em, 200px, 25vw);
+  height: clamp(8em, 200px, 25vw);
+  object-fit: cover;
+  border-radius: 50vw;
+  animation: slide 1s ease;
+  background-color: orangered;
+}
+
+.teamDetails{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.teamDetails p{
+  font-size: clamp(.6rem, 1rem, 2vw);
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .mission {
+   flex-direction: column;
+  }
+  .mission .left{
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+  }
+  .mission .rightt{
+    width: 100%;
+  }
+  .mission .rightt img{
+    width: 100%;
+  }
+}

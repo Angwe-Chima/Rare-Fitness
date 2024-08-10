@@ -85,13 +85,20 @@
   padding: .05em;
 }
 
-.right-nav div:nth-child(1) img {
-  border-radius: 2px solid orangered;
+
+.right-nav div:nth-child(1) a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.right-nav div:nth-child(1) a img {
   background-color: black;
   border-radius: 50%;
   width: 28px;
   height: 28px;
+  cursor: pointer;
 }
+
 
 .right-nav div:nth-child(2) {
   display: flex;
@@ -122,6 +129,7 @@
 .cart-img {
   height: 1.8em;
 }
+
 
 .cart-div span{
   font-size:.8rem;

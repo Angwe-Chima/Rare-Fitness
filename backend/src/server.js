@@ -6,9 +6,13 @@ import authRoute from "./routes/authRoute.js";
 import productRoute from "./routes/productRoute.js";
 import orderRoute from "./routes/orderRoute.js";
 import userRoute from "./routes/userRoute.js";
-import visitorRoute from './routes/visitorRoute.js'
+import visitorRoute from "./routes/visitorRoute.js";
+import emailRouter from "./routes/emailRoute.js";
+import shopProductRoute from './routes/shopProductRoute.js'
 import createAdminAccount from "./scripts/admin.js";
 import cors from "cors";
+import helmet from "helmet";
+import bodyParser from "body-parser";
 
 dotenv.config();
 
@@ -32,6 +36,10 @@ app.use(
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(helmet());
+
 
 // Routes
 app.use("/auth", authRoute);
@@ -39,6 +47,9 @@ app.use("/shop", productRoute);
 app.use("/order", orderRoute);
 app.use("/user", userRoute);
 app.use("/visitor", visitorRoute);
+app.use("/shop-product", shopProductRoute);
+app.use("/email", emailRouter);
+
 
 const port = process.env.PORT || 3000;
 

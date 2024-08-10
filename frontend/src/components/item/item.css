@@ -1,8 +1,8 @@
 .item {
-  width: 250px;
+  width: 270px;
   background-color: white;
   transition: 500ms;
-  box-shadow: 0px 0px 10px 2px rgba(128, 128, 128, 0.132);
+  box-shadow: 0px 0px 10px 2px rgba(128, 128, 128, 0.16);
   border-radius: .5rem;
 }
 
@@ -10,12 +10,11 @@
   max-width: 100%;
   max-height: 100%;
   aspect-ratio: 1/1;
-  /* border-top-left-radius: 8px;
-  border-top-right-radius: 8px; */
+  border-radius: .5rem .5rem 0rem 0rem;
 }
 
 .description {
-  padding-block: .5em;
+  padding-block: 1em;
   text-align: center;
   background-color: #201F1F;
   color: white;
@@ -31,8 +30,22 @@
   border: none;
   color: white;
   padding: .4rem 1rem;
-  border-radius: .5rem;
+  border-radius: .4rem;
   cursor: pointer;
-  font-weight: bold;
-  font-size: .8rem;
+  font-weight: 600;
+  font-size: .7rem;
+  transition: background-color 0.3s;
+}
+
+.item__addToCartBtn:hover {
+  background-color: #e64a19; /* Darker orangered on hover */
+}
+
+.item__addToCartBtn.in-cart {
+  background-color: #d84315; /* Darker orangered for "In Cart" */
+}
+
+.item__addToCartBtn:disabled {
+  background-color: rgb(179, 50, 3); /* Disabled state color */
+  cursor: not-allowed;
 }

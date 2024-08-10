@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import shopBanner from "../../images/shop-banner.jpeg";
+import shopBanner from "../../images/shop-banner.png";
 import "./shop.css";
 import { ShopContext } from "../../contexts/ShopContext";
 import SideBar from "../../components/sidebar/SideBar";

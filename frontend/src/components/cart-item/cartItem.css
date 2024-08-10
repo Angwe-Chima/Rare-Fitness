@@ -20,11 +20,11 @@
 
 .cartItem {
   display: grid;
-  grid-template-columns: 100px 1fr .5fr .5fr;
+  grid-template-columns: 100px 1fr 0.5fr 0.5fr;
   border: 1px solid rgb(222, 222, 222);
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   padding: 1.25em;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 @media (max-width: 1000px) {
@@ -44,11 +44,11 @@
 .cartItem__quantity {
   display: flex;
   align-items: center;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 .cartItem__quantity button {
-  padding: .5em;
+  padding: 0.5em;
 }
 
 .cartItem__quantity-change {
@@ -60,13 +60,13 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  color: #E2725B;
+  color: #e2725b;
 }
 
 .payment-summary-title {
   font-weight: 700;
   font-size: 1.25rem;
-  margin-bottom: .85em;
+  margin-bottom: 0.85em;
 }
 
 .payment-summary-row {
@@ -74,7 +74,7 @@
   grid-template-columns: 1fr auto;
 
   font-size: 1rem;
-  margin-bottom: .75em;
+  margin-bottom: 0.75em;
 }
 
 .payment-summary-money {
@@ -86,11 +86,11 @@
 }
 
 .subtotal-row div {
-  padding-top: .75em;
+  padding-top: 0.75em;
 }
 
 .total-row {
-  color: #E2725B;
+  color: #e2725b;
   font-weight: 700;
   font-size: 1.25rem;
   border-top: 1px solid rgb(222, 222, 222);
@@ -99,9 +99,9 @@
 
 .place-order-button {
   width: 100%;
-  padding-block: .85em;
-  border-radius: .5rem;
-  margin-top: .75em;
+  padding-block: 0.85em;
+  border-radius: 0.5rem;
+  margin-top: 0.75em;
   margin-bottom: 1em;
   border: 0;
   background-color: #171212fa;
@@ -113,5 +113,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.popup h1 {
   font-size: 3rem;
+}
+
+.popup a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+  text-decoration: none;
+}
+
+.popup a button {
+  background-color: orangered;
+  color: white;
+  font-weight: bold;
+  border-radius: 100vw;
+  border: none;
+  padding: 0.8em 4em;
 }

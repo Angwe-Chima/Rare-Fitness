@@ -5,14 +5,16 @@ import cartImg from "../../../images/cart-img.svg";
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../../contexts/ShopContext";
 
-
 function Navbar() {
-  const {getTotalCartItems} = useContext(ShopContext);
-  
+  const { getTotalCartItems } = useContext(ShopContext);
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const [menu, setMenu] = useState(location.pathname);
+  const [profileImage, setProfileImage] = useState(
+    localStorage.getItem("profileImage") || "https://avatar.iran.liara.run/public/"
+  );
 
   const token = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
@@ -23,16 +25,31 @@ function Navbar() {
     setMenu(location.pathname);
   }, [location.pathname]);
 
+  useEffect(() => {
+    // Assume this function generates a new image URL
+    const newImage = generateNewProfileImage();
+    if (newImage) {
+      localStorage.setItem("profileImage", newImage);
+      setProfileImage(newImage);
+    }
+  }, []); // Empty array to only run once on component mount
+
+  const generateNewProfileImage = () => {
+    // Replace with your logic to generate a new image
+    return "https://avatar.iran.liara.run/public/"; // Example image URL
+  };
+
   const getClassName = (menuItem) => (menu === menuItem ? "active" : "");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
+    localStorage.removeItem("profileImage"); // Clear profile image on logout
     navigate("/login");
   };
 
   if (hideNavbar) {
-    return null; // Return null instead of an empty div for better clarity
+    return null;
   }
 
   return (
@@ -90,11 +107,13 @@ function Navbar() {
       <div className="right-nav">
         <div>
           {token && (
-            <img
-              className="cart-img"
-              src="https://avatar.iran.liara.run/public/"
-              alt="Profile"
-            />
+            <a href="/profile">
+              <img
+                className="profile_img"
+                src={profileImage}
+                alt="Profile"
+              />
+            </a>
           )}
           <p>{userName || "Not logged in"}</p>
         </div>
@@ -109,7 +128,9 @@ function Navbar() {
             )}
           </button>
           <div className="cart-div">
-            <a href="/cart"><img className="cart-img" src={cartImg} alt="Cart" /></a>
+            <a href="/cart">
+              <img className="cart-img" src={cartImg} alt="Cart" />
+            </a>
             <span>{getTotalCartItems()}</span>
           </div>
         </div>

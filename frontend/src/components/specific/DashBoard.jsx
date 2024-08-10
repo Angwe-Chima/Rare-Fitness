@@ -6,12 +6,16 @@ const DashBoard = () => {
   const [userCount, setUserCount] = useState(0);
   const [productCount, setProductCount] = useState(0);
   const [orderCount, setOrderCount] = useState(0);
+  const [emailCount, setEmailCount] = useState(0);
   const [visitorCount, setVisitorCount] = useState(0);
 
   const fetchCounts = async () => {
     try {
       const usersResponse = await axios.get("/user");
       setUserCount(usersResponse.data.length);
+
+      const emailResponse = await axios.get("/email");
+      setEmailCount(emailResponse.data.length);
 
       const productsResponse = await axios.get("/shop");
       setProductCount(productsResponse.data.length);
@@ -52,6 +56,11 @@ const DashBoard = () => {
           <p>Orders</p>
           <h2>{orderCount}</h2>
           <a href="/dashboard/order">Details</a>
+        </div>
+        <div className="box">
+          <p>Mails</p>
+          <h2>{emailCount}</h2>
+          <a href="/dashboard/email">Details</a>
         </div>
         <div className="box">
           <p>Page Views</p>

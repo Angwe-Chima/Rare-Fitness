@@ -10,7 +10,7 @@ const Product = () => {
     id: "",
     name: "",
     description: "",
-    price: "",
+    priceCents: "",
     category: "",
     stock: "",
     imageUrl: "",
@@ -40,7 +40,7 @@ const Product = () => {
       id: product._id,
       description: product.description,
       name: product.name,
-      price: product.price,
+      price: product.priceCents,
       category: product.category,
       stock: product.stock,
       imageUrl: product.imageUrl,
@@ -110,7 +110,7 @@ const Product = () => {
       id: "",
       name: "",
       description: "",
-      price: "",
+      priceCents: "",
       category: "",
       stock: "",
       imageUrl: "",
@@ -134,15 +134,18 @@ const Product = () => {
           <div key={product._id} onDoubleClick={() => handleEditClick(product)}>
             <h3>{product.name}</h3>
             <p>
-              <span>Price:</span>
-              {product.price}
+              <span>priceCents:</span>
+              {product.priceCents}
             </p>
             <p>
               <span>Category: </span>
               {product.category}
             </p>
+            <p>
+              <span>Brand: </span>
+              {product.brand}
+            </p>
             <p className="description">
-              <span>Description:</span>
               {product.description}
             </p>
             <p>
