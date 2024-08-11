@@ -1,8 +1,8 @@
 .subClass .yogaDiv {
   width: 90%;
   border-radius: 1rem;
-  height: 50vh;  background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
-    url(https://plus.unsplash.com/premium_photo-1669446008661-6729d2e91b00?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8SGF0aGElMjBZb2dhfGVufDB8fDB8fHww);
+  height: 55vh;  background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
+    url(https://firebasestorage.googleapis.com/v0/b/rare-fitness.appspot.com/o/class%2Fyoga.jpeg?alt=media&token=e415fcd2-ecb3-4706-aeb3-09c591718c0b);
   background-size: 90%;
   background-position: center;
   background-attachment: fixed;

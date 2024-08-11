@@ -36,7 +36,7 @@ function Yoga() {
                 </div>
                 <div className="classBtm">
                   <button>Coming Soon</button>
-                  <p>Play Sport</p>
+                  <p></p>
                 </div>
               </div>
             </div>

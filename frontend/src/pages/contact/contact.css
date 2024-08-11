@@ -96,6 +96,17 @@
   font-size: clamp(0.6rem, 1rem, 3vw);
 }
 
+.cell{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1em;
+}
+
+.detailsandIcons > div img{
+  width: 20px;
+}
+
 .map {
   width: 100%;
   display: flex;
@@ -167,6 +178,15 @@
   flex-direction: column;
 }
 
+.right-section form button{
+  padding: .7em 3em;
+  background-color: orangered;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 100vw;
+}
+
 .input-div {
   width: 95%;
   display: flex;
@@ -183,6 +203,7 @@
 }
 .input-div textarea {
   border-radius: 0.5rem;
+  padding: 1em;
 }
 
 .faq {
@@ -246,4 +267,17 @@ summary::marker {
 
 details > p {
   margin-left: 20px;
+}
+.submit-btn.submitted {
+  background-color: limegreen; 
+}
+
+.submit-btn:disabled {
+  cursor: not-allowed; 
+}
+
+.form-status {
+  margin-top: 10px;
+  color: limegreen;
+  font-weight: bold;
 }

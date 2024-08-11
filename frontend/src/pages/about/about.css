@@ -1,4 +1,4 @@
-.about_page{
+.about_page {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -7,14 +7,38 @@
   gap: 2em;
 }
 
-.mission{
+.who-we-are {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  gap: 2em;
+  margin-top: 2em;
+}
+
+.who-we-are p {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.9rem;
+}
+
+.mission {
   width: 90%;
   display: flex;
+  margin-top: 3em;
+  padding: 1em;
+}
+
+.vision {
+  width: 90%;
+  display: flex;
+  flex-direction: row-reverse;
   margin-top: 1em;
   padding: 1em;
 }
 
-.mission .left{
+.mission .left {
   width: 50%;
   display: flex;
   justify-content: center;
@@ -24,79 +48,103 @@
   flex-direction: column;
 }
 
-.mission .left h2{
- font-size:clamp(2rem,  2.5rem, 3vw);
- letter-spacing: .08em;
- font-family: "Play Pretend", sans-serif;
+.vision .left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin: 3em 0em;
+  gap: 1.5em;
+  flex-direction: column;
 }
 
-.mission .left p{
+.mission .left h2,
+.vision .left h2,
+.who-we-are h2 {
+  font-size: clamp(2rem, 2.5rem, 3vw);
+  letter-spacing: 0.08em;
+  font-family: "Play Pretend", sans-serif;
+}
+
+.mission .left p,
+.vision .left p {
   width: 95%;
-  font-size: .8rem, 1rem, 3vw;
+  font-size: 0.8rem, 1rem, 3vw;
 }
 
-.mission .rightt{
+.mission .rightt,
+.vision .rightt {
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.mission .rightt img{
-  width:95%;
+.mission .rightt img,
+.vision .rightt img {
+  width: 95%;
   height: 95%;
   border-radius: 1rem;
 }
 
-.our_team{
+.our_team {
   width: 90%;
   display: flex;
+  margin-top: 2em;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 2em;
 }
 
-.teamDiv{
+.our_team h2 {
+  font-size: clamp(2rem, 2.5rem, 3vw);
+  letter-spacing: 0.1em;
+  font-family: "Play Pretend", sans-serif;
+}
+
+.teamDiv {
   display: flex;
   justify-content: center;
   width: 100%;
   flex-direction: column;
-  gap: 2em;
+  gap: 1.5em;
   align-items: center;
-  padding: 1em ;
+  padding: 1em;
 }
 
-.teamCard{
+.teamCard {
   width: clamp(22em, 85%, 70vw);
   border: 2px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .5em;
-  transition: .5s;
-  gap: 1.5em;
+  padding: 0.5em;
+  transition: 0.5s;
+  gap: 1em;
   border-radius: 20vw 0vw 0vw 20vw;
 }
 
 @keyframes slide {
-  0%{
+  0% {
     transform: translateX(-5em);
-  }100%{
+  }
+  100% {
     transform: translateX(0em);
   }
 }
 
-.teamCard img{
-  width: clamp(8em, 200px, 25vw);
-  height: clamp(8em, 200px, 25vw);
+.teamCard img {
+  width: clamp(10rem, 200px, 25vw);
+  height: clamp(8rem, 180px, 25vw);
   object-fit: cover;
-  border-radius: 50vw;
+  border-radius: 100vw 0vw 0vw 100vw;
   animation: slide 1s ease;
-  background-color: orangered;
+  border: 1px solid black;
+  filter: brightness(120%);
 }
 
-.teamDetails{
+.teamDetails {
   display: flex;
   justify-content: center;
   align-items: start;
@@ -104,26 +152,39 @@
   gap: 1em;
 }
 
-.teamDetails p{
-  font-size: clamp(.6rem, 1rem, 2vw);
+.teamDetails p {
+  font-size: clamp(0.5rem, 3vw, 0.9rem);
 }
-
-
 
 @media only screen and (max-width: 768px) {
   .mission {
-   flex-direction: column;
+    flex-direction: column;
   }
-  .mission .left{
+  .mission .left {
     justify-content: center;
     align-items: center;
     gap: 1em;
     width: 100%;
   }
-  .mission .rightt{
+  .mission .rightt {
     width: 100%;
   }
-  .mission .rightt img{
+  .mission .rightt img {
+    width: 100%;
+  }
+  .vision {
+    flex-direction: column;
+  }
+  .vision .left {
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+  }
+  .vision .rightt {
+    width: 100%;
+  }
+  .vision .rightt img {
     width: 100%;
   }
 }

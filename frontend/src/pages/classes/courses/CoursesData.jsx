@@ -7,6 +7,7 @@ import Sports from "./sports/Sports";
 import StretchAndFlexibility from "./stretchAndFlexibility/StretchAndFlexibility";
 import Weightlifting from "./weightlifting/Weightlifting";
 import Yoga from "./yoga/Yoga";
+import soprtsImg from '../../../images/sports.jpeg'
 
 export default [
   {
@@ -62,7 +63,7 @@ export default [
     id: 'course7',
     urlTitle: 'sports',
     title: 'Sports',
-    courseImg: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BvcnRzfGVufDB8fDB8fHww",
+    courseImg: soprtsImg,
     Component: Sports
   },
   {

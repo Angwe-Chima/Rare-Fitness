@@ -1,5 +1,5 @@
-import { useState } from "react";
-import axios from '../../api/axios.js'; // Ensure axios is properly set up
+import { useState, useEffect } from "react";
+import axios from "../../api/axios.js"; // Ensure axios is properly set up
 import "./contact.css";
 
 function Contact() {
@@ -10,7 +10,19 @@ function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState(""); // State to track submission status
+  const [status, setStatus] = useState(""); 
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        setIsSubmitted(false); 
+        setStatus("");
+      }, 60000); // 60 seconds
+
+    return () => clearTimeout(timer); 
+    }
+  }, [isSubmitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +35,10 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Update the endpoint to match your API route
-      await axios.post("/email", formData); // Sending POST request to /api/emails
-      setStatus("Message sent successfully!");
-      setFormData({ fullName: "", email: "", phone: "", message: "" }); // Clear the form fields
+      await axios.post("/email", formData); 
+      setStatus("Message sent successfully! come back in 1min");
+      setIsSubmitted(true);
+      setFormData({ fullName: "", email: "", phone: "", message: "" });
     } catch (error) {
       console.error("There was an error sending the message!", error);
       setStatus("Failed to send message, please try again later.");
@@ -39,11 +51,13 @@ function Contact() {
       <div className="image-container1">
         <div className="text-overlay">
           <h3>Our Contact</h3>
-          <p>Reach out to us with any questions or concerns you may have, and we'll be happy to help!</p>
+          <p>
+            Reach out to us with any questions or concerns you may have, and
+            we'll be happy to help!
+          </p>
         </div>
       </div>
 
-      {/* Second section with map and contact details */}
       <div className="section2">
         <div className="left-section">
           <div className="getInTouch">
@@ -54,22 +68,46 @@ function Contact() {
           <div className="detailsandIcons">
             <div>
               <div>
-                <h3>Email Us</h3>
+                <div className="cell">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/rare-fitness.appspot.com/o/contact%2FgetInTouch%2Femail.png?alt=media&token=5de1f40a-ef3e-421a-8b06-009d4ea89989"
+                    alt=""
+                  />
+                  <h3>Email Us</h3>
+                </div>
                 <h5>rarefit@gmail.com</h5>
               </div>
               <div>
-                <h3>Gym Studio</h3>
+                <div className="cell">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/rare-fitness.appspot.com/o/contact%2FgetInTouch%2Fstudio.png?alt=media&token=f05cb2d9-1cfe-41be-8016-4eb756a109dc"
+                    alt=""
+                  />
+                  <h3>Gym Studio</h3>
+                </div>
                 <h5>No 12 Lake Avenue Lekki, Lagos Nigeria</h5>
               </div>
             </div>
 
             <div>
               <div>
-                <h3>Working Hours</h3>
+                <div className="cell">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/rare-fitness.appspot.com/o/contact%2FgetInTouch%2Fworking-time.png?alt=media&token=85f85e5d-8c23-4b0a-b243-6472576f92ed"
+                    alt=""
+                  />
+                  <h3>Working Hours</h3>
+                </div>
                 <h5>Mon - Sat | 9:00AM - 11:00PM</h5>
               </div>
               <div>
-                <h3>Call Us</h3>
+                <div className="cell">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/rare-fitness.appspot.com/o/contact%2FgetInTouch%2Fphone-call.png?alt=media&token=041d052b-e03a-4562-b62a-09a65b702dc4"
+                    alt=""
+                  />
+                  <h3>Call Us</h3>
+                </div>
                 <h5>+2346790834457, +234023466739</h5>
               </div>
             </div>
@@ -94,7 +132,10 @@ function Contact() {
         <div className="right-section">
           <div className="messageText">
             <h2>Send Us A Message</h2>
-            <h5>We're here to help with any inquiries or comments. Drop us a message and we'll get back to you shortly.</h5>
+            <h5>
+              We're here to help with any inquiries or comments. Drop us a
+              message and we'll get back to you shortly.
+            </h5>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="input-div">
@@ -137,7 +178,13 @@ function Contact() {
                 required
               ></textarea>
             </div>
-            <button type="submit">Send Message</button>
+            <button 
+              type="submit" 
+              className={`submit-btn ${isSubmitted ? "submitted" : ""}`}
+              disabled={isSubmitted} // Disable the button after submission
+            >
+              {isSubmitted ? "Message Sent" : "Send Message"}
+            </button>
             {status && <p className="form-status">{status}</p>} {/* Display status message */}
           </form>
         </div>
@@ -165,7 +212,10 @@ function Contact() {
           </details>
           <details>
             <summary>5. Do you offer personal training sessions?</summary>
-            <p>Yes, we provide personal training. Contact us for more information.</p>
+            <p>
+              Yes, we provide personal training. Contact us for more
+              information.
+            </p>
           </details>
         </div>
       </div>

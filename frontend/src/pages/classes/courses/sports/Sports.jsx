@@ -36,7 +36,7 @@ function Sports() {
                 </div>
                 <div className="classBtm">
                   <button>Coming Soon</button>
-                  <p>play sports</p>
+                  <p>RareFit</p>
                 </div>
               </div>
             </div>

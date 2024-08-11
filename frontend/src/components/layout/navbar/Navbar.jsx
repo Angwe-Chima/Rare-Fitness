@@ -12,6 +12,7 @@ function Navbar() {
   const location = useLocation();
 
   const [menu, setMenu] = useState(location.pathname);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [profileImage, setProfileImage] = useState(
     localStorage.getItem("profileImage") || "https://avatar.iran.liara.run/public/"
   );
@@ -41,6 +42,10 @@ function Navbar() {
 
   const getClassName = (menuItem) => (menu === menuItem ? "active" : "");
 
+  function toggleMenu() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
@@ -57,7 +62,7 @@ function Navbar() {
       <div className="logo-div">
         <img src={logo} alt="Logo" />
       </div>
-      <ul>
+      <ul className={isMenuOpen ? "active" : ""}>
         <li>
           <Link
             className={getClassName("/")}
@@ -133,6 +138,7 @@ function Navbar() {
             </a>
             <span>{getTotalCartItems()}</span>
           </div>
+          <button className="hamburger-menu" onClick={toggleMenu}>☰</button>
         </div>
       </div>
     </div>

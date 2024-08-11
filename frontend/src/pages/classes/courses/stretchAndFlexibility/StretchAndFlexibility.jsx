@@ -36,7 +36,7 @@ function StretchAndFlexibility() {
                 </div>
                 <div className="classBtm">
                   <button>Coming Soon</button>
-                  <div>play sports</div>
+                  <div>RareFit</div>
                 </div>
               </div>
             </div>

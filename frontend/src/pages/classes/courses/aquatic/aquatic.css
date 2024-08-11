@@ -10,7 +10,7 @@
 .subClass .aquaticDiv {
   width: 90%;
   border-radius: 1rem;
-  height: 50vh;
+  height: 55vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.138), rgba(0, 0, 0, 0.747)),
     url(https://plus.unsplash.com/premium_photo-1664475361436-e37f6f2ba407?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
   background-size: cover;

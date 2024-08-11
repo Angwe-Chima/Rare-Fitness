@@ -125,3 +125,27 @@
   border: 0.5px solid black;
   border-radius: 0.5rem;
 }
+
+
+@media (max-width: 768px) {
+  /* Adjust main container layout */
+  .shop__main-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Show sidebar toggle button */
+  .sidebar-toggle {
+    display: block;
+  }
+
+  /* Hide sidebar by default */
+  .sidebar-hidden {
+    display: none;
+  }
+
+  /* Full-width search input */
+  .search-input {
+    width: 80%;
+  }
+}

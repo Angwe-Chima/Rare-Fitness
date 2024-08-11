@@ -75,7 +75,7 @@ const Home = () => {
             all fitness levels. Our personalized programs are designed to
             enhance your strength, endurance, and overall well-being
           </p>
-          <button>Learn More</button>
+          <a href="/about">learn More</a>
         </div>
         <div className="side-img">
           <img src={backgroundAbout} alt="" />

@@ -9,6 +9,8 @@ import userRoute from "./routes/userRoute.js";
 import visitorRoute from "./routes/visitorRoute.js";
 import emailRouter from "./routes/emailRoute.js";
 import shopProductRoute from './routes/shopProductRoute.js'
+import classRoute from './routes/classRoute.js'
+import subClassRoute from './routes/subClassRoute.js'
 import createAdminAccount from "./scripts/admin.js";
 import cors from "cors";
 import helmet from "helmet";
@@ -49,6 +51,8 @@ app.use("/user", userRoute);
 app.use("/visitor", visitorRoute);
 app.use("/shop-product", shopProductRoute);
 app.use("/email", emailRouter);
+app.use("/classes", classRoute);
+app.use("/classes/:classId/subclasses", subClassRoute);
 
 
 const port = process.env.PORT || 3000;

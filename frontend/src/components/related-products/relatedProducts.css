@@ -1,5 +1,6 @@
 .relatedProducts > * {
   margin-top: 2em;
+  padding: 0em 2em;
 }
 
 .relatedProducts h2 {

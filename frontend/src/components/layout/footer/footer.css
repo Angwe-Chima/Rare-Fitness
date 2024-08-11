@@ -9,23 +9,25 @@
   flex-direction: column;
   color: white;
   gap: 3em;
-  justify-items: end;
-  justify-self: end;
 }
 
 .footer .topp{
   display: flex;
-  width: 90%;
+  width: 95%;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
+
 
 .topp .foot_min{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
+  width: 35%;
+  gap: 1em;
 }
+
 
 .foot_logo{
   width: 10%;
@@ -48,8 +50,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1em;
+  gap: 1.5em;
 }
+
+@media only screen and (max-width: 800px) {
+  .footer .topp {
+      flex-direction: column;
+      gap: 3em;
+      width: 100%;
+      justify-content: center;
+  }
+  .topp .foot_min{
+    justify-content: center;
+    width: 100%;
+  }
+
+  .foot_media{
+    justify-content: center;
+  }
+}
+
 
 .foot_media a{
   text-decoration: none;
