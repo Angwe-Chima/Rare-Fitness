@@ -60,6 +60,10 @@ const subClassSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    required: true,
+  }
 });
 
 const SubClass = mongoose.model("SubClass", subClassSchema);

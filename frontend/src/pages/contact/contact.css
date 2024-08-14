@@ -222,28 +222,28 @@
   text-align: center;
 }
 
-.details {
+.contact .details {
   width: 80%;
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
-.details details summary {
+.contact .details details summary {
   transition: 0.5s;
   font-size: clamp(1rem, 1.5rem, 3vw);
 }
 
-.details details p {
+.contact .details details p {
   font-size: clamp(0.8rem, 1rem, 3vw);
   padding: 0.5em;
 }
 
-.details {
+.contact .details {
   margin-top: 20px;
 }
 
-details {
+.contact details {
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -251,21 +251,21 @@ details {
   transition: all 0.3s ease;
 }
 
-details[open] summary {
+.contact details[open] summary {
   transform: rotate(5deg);
 }
 
-summary {
+.contact summary {
   cursor: pointer;
   font-weight: bold;
   list-style: none;
 }
 
-summary::marker {
+.contact summary::marker {
   display: none;
 }
 
-details > p {
+.contact details > p {
   margin-left: 20px;
 }
 .submit-btn.submitted {

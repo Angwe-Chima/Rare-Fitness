@@ -1,0 +1,143 @@
+.classDetail {
+  width: 90%;
+  margin-top: 7em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2em;
+  border: 1px solid black;
+}
+
+.class_left {
+  width: 60%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+  align-items: start;
+  gap: 2em;
+  padding: 1em;
+  min-height: 70vh;
+}
+
+.classReviews {
+  width: 100%;
+  border: 1px solid black;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: .8em;
+  flex-direction: column;
+}
+
+.classReviews > div{
+  border-left: 2px solid orangered;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.classReviews > div p:nth-child(1){
+  font-size: .8rem;
+}
+
+.learningOutComes{
+  width: 100%;
+  border: 1px solid black;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: .8em;
+  flex-direction: column;
+}
+
+.learningOutComes > p{
+  border-left: 2px solid orangered;
+  width: 100%;
+  padding: 0.3em;
+}
+
+.class_right {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  gap: 1em;
+  align-items: start;
+  border-inline: 2px solid black;
+  color: black;
+  flex-direction: column;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.info img {
+  width: 1.2rem;
+}
+
+.classDetImgDiv {
+  width: 100%;
+  height: 20em;
+}
+
+.classDetImgDiv img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid black;
+}
+
+.course_btn {
+  margin-top: 2em;
+  width: 40%;
+  padding: 0.7em 1em;
+  border: none;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+}
+
+/*  */
+.curriculum {
+  margin-top: .5em;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.curriculum details {
+  margin-bottom: .25em;
+  padding: 8px;
+  border-block: 1px solid black;
+  transition: all 0.3s ease;
+}
+
+.curriculum details summary {
+  cursor: pointer;
+  font-size: clamp(0.7rem, 0.8rem, 3vw);
+  font-weight: bold;
+  transition: 0.5s;
+  list-style: none;
+}
+
+.curriculum details[open] summary {
+  transform: rotate(2deg);
+}
+
+.curriculum summary::marker {
+  display: none;
+}
+
+.curriculum details p {
+  font-size: clamp(0.6rem, 0.8rem, 3vw);
+  padding: 0.5em;
+  margin-left: 20px;
+}
+
+

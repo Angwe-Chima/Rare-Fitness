@@ -94,3 +94,24 @@
   font-size:2rem;
   height: 100%;
 }
+
+
+.loadingDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+}
+
+.errorDiv{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 90vh;
+  flex-direction: column;
+  gap: 2em;
+}

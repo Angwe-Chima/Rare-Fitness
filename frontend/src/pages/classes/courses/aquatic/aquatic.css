@@ -143,19 +143,19 @@
   align-items: center;
 }
 
-.classBtm button {
-  padding: 0.7em 2em;
+.classBtm a {
+  padding: 0.6em 2em;
   background-color: orangered;
   border-radius: 0.5vw;
   border: none;
   color: white;
   font-size: clamp(.5rem, .9rem, 2vw);
-  cursor: not-allowed;
   transition: 0.4s;
+  text-decoration: none;
 }
 
-.classBtm button:hover {
-  background-color: rgb(157, 40, 7);
+.classBtm a:hover {
+  background-color: rgb(207, 50, 7);
 }
 
 .classBtm p{

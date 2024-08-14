@@ -2,6 +2,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const classSchema = new Schema({
+  id: {
+    type: String,
+    required: true,
+  },
   urlTitle: {
     type: String,
     required: true,

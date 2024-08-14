@@ -5,7 +5,7 @@ import handleCatchError from "../utils/handleCatchError.js";
 // Add a subclass to a class
 export const addSubClass = async (req, res) => {
   try {
-    const { title, description, instructors, duration, rating, time, curriculum, learningOutcomes, reviews, language } = req.body;
+    const { title, description, instructors, duration, rating, time, curriculum, learningOutcomes, reviews, language, image } = req.body;
     const classData = await Class.findById(req.params.classId);
 
     if (!classData) {
@@ -23,6 +23,7 @@ export const addSubClass = async (req, res) => {
       learningOutcomes,
       reviews,
       language,
+      image
     });
 
     await newSubClass.save();
@@ -63,7 +64,7 @@ export const getSubClassById = async (req, res) => {
       return res.status(404).json({ error: "Class not found" });
     }
 
-    const subClass = classData.subClasses.id(req.params.subClassId);
+    const subClass = classData.subClasses.find(sc => sc._id.toString() === req.params.subClassId);
     if (!subClass) {
       return res.status(404).json({ error: "Subclass not found" });
     }
@@ -77,14 +78,14 @@ export const getSubClassById = async (req, res) => {
 // Update a subclass by ID
 export const updateSubClass = async (req, res) => {
   try {
-    const { title, description, instructors, duration, rating, time, curriculum, learningOutcomes, reviews, language } = req.body;
+    const { title, description, instructors, duration, rating, time, curriculum, learningOutcomes, reviews, language, image } = req.body;
     const classData = await Class.findById(req.params.classId);
 
     if (!classData) {
       return res.status(404).json({ error: "Class not found" });
     }
 
-    const subClass = classData.subClasses.id(req.params.subClassId);
+    const subClass = classData.subClasses.find(sc => sc._id.toString() === req.params.subClassId);
     if (!subClass) {
       return res.status(404).json({ error: "Subclass not found" });
     }
@@ -99,6 +100,7 @@ export const updateSubClass = async (req, res) => {
     subClass.learningOutcomes = learningOutcomes || subClass.learningOutcomes;
     subClass.reviews = reviews || subClass.reviews;
     subClass.language = language || subClass.language;
+    subClass.image = image || subClass.image;
 
     await classData.save();
 
@@ -117,12 +119,12 @@ export const deleteSubClass = async (req, res) => {
       return res.status(404).json({ error: "Class not found" });
     }
 
-    const subClass = classData.subClasses.id(req.params.subClassId);
-    if (!subClass) {
+    const subClassIndex = classData.subClasses.findIndex(sc => sc._id.toString() === req.params.subClassId);
+    if (subClassIndex === -1) {
       return res.status(404).json({ error: "Subclass not found" });
     }
 
-    subClass.remove();
+    classData.subClasses.splice(subClassIndex, 1);
     await classData.save();
 
     res.status(200).json({ message: "Subclass deleted" });
