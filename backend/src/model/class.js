@@ -18,7 +18,14 @@ const classSchema = new Schema({
     type: String,
     required: true,
   },
-  // Link to the SubClasses collection
+  topImage:{
+    type: String,
+    required: true,
+  },
+  description:{
+    type: String,
+    required: true,
+  },
   subClasses: [
     {
       type: Schema.Types.ObjectId,

@@ -5,6 +5,8 @@ import StarRating from "../star-rating/StarRating";
 import formatCurrency from '../../utils/money.js';
 import { useContext } from "react";
 import { ShopContext } from "../../contexts/ShopContext";
+
+
 const productDisplay = (props, {handleShowComparison}) => {
   const { addToCart } = useContext(ShopContext)
 

@@ -4,7 +4,7 @@ import handleCatchError from "../utils/handleCatchError.js";
 // Create a new class
 export const createClass = async (req, res) => {
   try {
-    const { id, urlTitle, title, courseImg, subClasses } = req.body;
+    const { id, urlTitle, title, courseImg, subClasses, topImage, description} = req.body;
 
     const newClass = new Class({
       id,
@@ -12,6 +12,8 @@ export const createClass = async (req, res) => {
       title,
       courseImg,
       subClasses,
+      topImage,
+      description
     });
 
     await newClass.save();

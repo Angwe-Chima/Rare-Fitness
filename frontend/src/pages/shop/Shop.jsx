@@ -5,6 +5,8 @@ import { ShopContext } from "../../contexts/ShopContext";
 import SideBar from "../../components/sidebar/SideBar";
 import ShopProductDisplay from "../../components/shopProductDisplay/ShopProductDisplay";
 import Item from "../../components/item/Item";
+
+
 const Shop = (props) => {
   const { products } = useContext(ShopContext);
 

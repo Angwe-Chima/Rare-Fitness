@@ -27,16 +27,9 @@ import { ShopContext } from "./contexts/ShopContext";
 import Shop from "./pages/shop/Shop";
 import Productt from "./pages/product/Product";
 import Cart from "./pages/cart/Cart";
-import CoursesData from "./pages/classes/courses/CoursesData";
-import ClassDetailsAquatic from "./components/class-detail/ClassDetailsAquatic";
-import ClassDetailsCardio from "./components/class-detail/ClassDetailsCardio";
-import ClassDetailsDance from "./components/class-detail/ClassDetailsDance";
-import ClassDetailsGroup from "./components/class-detail/ClassDetailsGroup";
-import ClassDetailsIndoor from "./components/class-detail/ClassDetailsIndoor";
-import ClassDetailsStretch from "./components/class-detail/ClassDetailsStretch";
-import ClassDetailsWeight from "./components/class-detail/ClassDetailsWeight";
-import ClassDetailsYoga from "./components/class-detail/ClassDetailsYoga";
-import ClassDetailsSport from "./components/class-detail/ClassDetailsSport";
+import ClassCourse from "./pages/classes/courses/ClassCourse";
+import ClassDetails from "./components/class-detail/ClassDetails";
+
 
 function App() {
   const { products } = useContext(ShopContext);
@@ -51,7 +44,6 @@ function App() {
   ];
 
   // State to hold the fetched course data
-  const [courses, setCourses] = useState([]);
 
   useEffect(() => {
     const incrementVisitorCount = async () => {
@@ -63,30 +55,6 @@ function App() {
     };
 
     incrementVisitorCount();
-  }, []);
-
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await axios.get("/classes");
-        const fetchedCourses = response.data.data;
-
-        // Map fetched courses to components using CoursesData
-        const coursesWithComponents = fetchedCourses.map((course) => {
-          const matchingCourse = CoursesData.find((c) => c.id === course.id);
-          return {
-            ...course,
-            Component: matchingCourse ? matchingCourse.Component : null,
-          };
-        });
-
-        setCourses(coursesWithComponents);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-
-    fetchCourses();
   }, []);
 
   return (
@@ -110,26 +78,9 @@ function App() {
         <Route path="/dashboard/email" element={<Email />} />
         <Route path="/dashboard/product" element={<Product />} />
         <Route path="/dashboard/order" element={<Order />} />
-        <Route path="/aquatic-class-details/:id" element={<ClassDetailsAquatic />} />
-        <Route path="/cardio-class-details/:id" element={<ClassDetailsCardio />}/>
-        <Route path="/dance-class-details/:id" element={<ClassDetailsDance />} />
-        <Route path="/group-class-details/:id" element={<ClassDetailsGroup />} />
-        <Route path="/indoor-class-details/:id" element={<ClassDetailsIndoor />} />
-        <Route path="/stretch-class-details/:id" element={<ClassDetailsStretch />} />
-        <Route path="/weight-class-details/:id" element={<ClassDetailsWeight />} />
-        <Route path="/yoga-class-details/:id" element={<ClassDetailsYoga />} />
-        <Route path="/sport-class-details/:id" element={<ClassDetailsSport />} />
-        {courses.map(
-          (course) =>
-            course.Component && (
-              <Route
-                key={course.id}
-                path={`/classes/${course.urlTitle.toLowerCase()}`}
-                element={<course.Component />}
-              />
-            )
-        )}
-      </Routes>
+        <Route path="/classes/:_id" element={<ClassCourse />} />
+        <Route path="/classes/:classId/subclasses/:subclassId" element={<ClassDetails />} />
+        </Routes>
       <Footer />
     </>
   );
